@@ -61,7 +61,17 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				terminal: {
+					green: 'hsl(var(--terminal-green))',
+					cyan: 'hsl(var(--terminal-cyan))',
+					magenta: 'hsl(var(--terminal-magenta))',
+					gray: 'hsl(var(--terminal-gray))',
+					dark: 'hsl(var(--terminal-dark))'
 				}
+			},
+			fontFamily: {
+				'mono': ['JetBrains Mono', 'Fira Code', 'Source Code Pro', 'monospace'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
