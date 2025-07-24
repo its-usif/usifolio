@@ -33,18 +33,12 @@ const Header = () => {
             [Yousif Ahmed]
           </div>
           
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex flex-col space-y-4">
             <button
               onClick={() => scrollToSection("about")}
               className="text-terminal-gray hover:text-terminal-cyan transition-colors duration-300"
             >
               About
-            </button>
-            <button
-              onClick={() => scrollToSection("experience")}
-              className="text-terminal-gray hover:text-terminal-cyan transition-colors duration-300"
-            >
-              Experience
             </button>
             <button
               onClick={() => scrollToSection("projects")}
