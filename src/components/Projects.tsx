@@ -5,21 +5,24 @@ const Projects = () => {
       description: "This exact site, self-built for branding",
       tech: ["React", "TypeScript", "Tailwind CSS"],
       status: "Live",
-      link: "#"
+      link: "#",
+      image: "photo-1498050108023-4542c06a5843"
     },
     {
       title: "Lab Portal",
       description: "Internal tool for managing lab resources, updated frontend/backend",
       tech: ["React", "Node.js", "Database"],
       status: "In Development",
-      link: "#"
+      link: "#",
+      image: "photo-1461749280684-dccba630e2f6"
     },
     {
       title: "Vertere Project",
       description: "Inventory optimization and database alignment using Vertere LIMS",
       tech: ["Python", "Database", "LIMS"],
       status: "Completed",
-      link: "#"
+      link: "#",
+      image: "photo-1487058792275-0ad4aaf24ca7"
     }
   ];
 
@@ -33,57 +36,71 @@ const Projects = () => {
           <div className="w-24 h-1 bg-terminal-cyan mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="space-y-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="terminal-section p-6 rounded-lg hover-glow cursor-pointer group"
+              className="terminal-section p-6 rounded-lg hover-glow cursor-pointer group flex flex-col md:flex-row gap-6"
             >
-              {/* Project header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-terminal-green rounded-full"></div>
-                  <div className="w-3 h-3 bg-terminal-cyan rounded-full"></div>
-                  <div className="w-3 h-3 bg-terminal-magenta rounded-full"></div>
-                </div>
-                <div className={`text-xs px-2 py-1 rounded ${
-                  project.status === 'Live' ? 'bg-terminal-green/20 text-terminal-green' :
-                  project.status === 'In Development' ? 'bg-terminal-cyan/20 text-terminal-cyan' :
-                  'bg-terminal-magenta/20 text-terminal-magenta'
-                }`}>
-                  {project.status}
+              {/* Project Image */}
+              <div className="md:w-1/3">
+                <div className="aspect-video bg-terminal-gray/10 rounded-lg overflow-hidden border border-terminal-gray/20">
+                  <img
+                    src={`https://images.unsplash.com/${project.image}?w=400&h=240&fit=crop&crop=entropy&cs=tinysrgb`}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               </div>
 
-              {/* Project content */}
-              <div className="font-mono">
-                <h3 className="text-lg font-bold text-terminal-cyan mb-3 group-hover:text-terminal-green transition-colors">
-                  {project.title}
-                </h3>
-                
-                <p className="text-terminal-gray text-sm mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Tech stack */}
-                <div className="mb-4">
-                  <div className="text-terminal-magenta text-xs mb-2">stack = [</div>
-                  <div className="ml-4 space-y-1">
-                    {project.tech.map((tech, idx) => (
-                      <div key={idx} className="text-xs">
-                        <span className="text-terminal-cyan">"{tech}"</span>
-                        {idx < project.tech.length - 1 && <span className="text-terminal-gray">,</span>}
-                      </div>
-                    ))}
+              {/* Project Content */}
+              <div className="md:w-2/3">
+                {/* Project header */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-3 h-3 bg-terminal-green rounded-full"></div>
+                    <div className="w-3 h-3 bg-terminal-cyan rounded-full"></div>
+                    <div className="w-3 h-3 bg-terminal-magenta rounded-full"></div>
                   </div>
-                  <div className="text-terminal-magenta text-xs mt-2">]</div>
+                  <div className={`text-xs px-2 py-1 rounded ${
+                    project.status === 'Live' ? 'bg-terminal-green/20 text-terminal-green' :
+                    project.status === 'In Development' ? 'bg-terminal-cyan/20 text-terminal-cyan' :
+                    'bg-terminal-magenta/20 text-terminal-magenta'
+                  }`}>
+                    {project.status}
+                  </div>
                 </div>
 
-                {/* View project link */}
-                <div className="text-xs">
-                  <span className="text-terminal-green">$</span>
-                  <span className="text-terminal-gray"> view_project --url=</span>
-                  <span className="text-terminal-cyan hover:underline">{project.link}</span>
+                {/* Project content */}
+                <div className="font-mono">
+                  <h3 className="text-xl font-bold text-terminal-cyan mb-3 group-hover:text-terminal-green transition-colors">
+                    {project.title}
+                  </h3>
+                  
+                  <p className="text-terminal-gray text-sm mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Tech stack */}
+                  <div className="mb-4">
+                    <div className="text-terminal-magenta text-xs mb-2">stack = [</div>
+                    <div className="ml-4 space-y-1">
+                      {project.tech.map((tech, idx) => (
+                        <div key={idx} className="text-xs">
+                          <span className="text-terminal-cyan">"{tech}"</span>
+                          {idx < project.tech.length - 1 && <span className="text-terminal-gray">,</span>}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="text-terminal-magenta text-xs mt-2">]</div>
+                  </div>
+
+                  {/* View project link */}
+                  <div className="text-xs">
+                    <span className="text-terminal-green">$</span>
+                    <span className="text-terminal-gray"> view_project --url=</span>
+                    <span className="text-terminal-cyan hover:underline">{project.link}</span>
+                  </div>
                 </div>
               </div>
             </div>
