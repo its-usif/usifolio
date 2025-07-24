@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Mail, Phone, Linkedin, Github } from "lucide-react";
 
 const Contact = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -15,28 +16,28 @@ const Contact = () => {
 
   const contacts = [
     {
-      icon: "📧",
+      icon: Mail,
       label: "Email",
       value: "youssifalkarim@gmail.com",
       action: copyEmail,
       copyable: true
     },
     {
-      icon: "📞",
+      icon: Phone,
       label: "Phone",
       value: "+974 5041 9694",
       action: () => window.open("tel:+97450419694"),
       copyable: false
     },
     {
-      icon: "🔗",
+      icon: Linkedin,
       label: "LinkedIn",
       value: "linkedin.com/in/yousif-ahmed-ba2598271/",
       action: () => window.open("https://linkedin.com/in/yousif-ahmed-ba2598271/", "_blank"),
       copyable: false
     },
     {
-      icon: "🐙",
+      icon: Github,
       label: "GitHub",
       value: "github.com/its-usif",
       action: () => window.open("https://github.com/its-usif", "_blank"),
@@ -68,7 +69,7 @@ const Contact = () => {
                   onClick={contact.action}
                 >
                   <div className="flex items-center space-x-4">
-                    <span className="text-2xl">{contact.icon}</span>
+                    <contact.icon className="w-6 h-6 text-terminal-cyan" />
                     <div>
                       <div className="text-terminal-cyan text-sm">{contact.label}</div>
                       <div className="text-foreground">{contact.value}</div>
