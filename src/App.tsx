@@ -14,7 +14,8 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const handleLoadingComplete = () => {
-    setIsLoading(false);
+    // Comment out to keep showing loading page
+    // setIsLoading(false);
   };
 
   if (isLoading) {
