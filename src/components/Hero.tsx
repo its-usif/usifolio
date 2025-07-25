@@ -38,7 +38,7 @@ const Hero = () => {
       <div className="text-center z-10 px-6">
         {/* Terminal-style tagline */}
         <div className="text-xl md:text-2xl text-terminal-gray font-mono mb-12">
-          <span className="text-terminal-green">user@portfolio:~$ </span>
+          <span className="text-terminal-green">user@USIFOLIO:~$ </span>
           <span>{displayText}</span>
           <span className={`inline-block w-3 h-6 bg-terminal-green ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`}></span>
         </div>
