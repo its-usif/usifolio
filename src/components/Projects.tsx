@@ -1,7 +1,7 @@
 const Projects = () => {
   const projects = [
     {
-      title: "USIFOLIO",
+      title: "Usifolio",
       description: "This exact site, self-built for branding",
       tech: ["React", "TypeScript", "Tailwind CSS"],
       status: "Live",
