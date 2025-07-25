@@ -36,14 +36,6 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-transparent via-terminal-green/5 to-terminal-cyan/5"></div>
 
       <div className="text-center z-10 px-6">
-        {/* Main name with glitch effect */}
-        <h1 
-          className="text-6xl md:text-8xl lg:text-9xl font-bold mb-8 glitch"
-          data-text="Yousif Ahmed"
-        >
-          Yousif Ahmed
-        </h1>
-
         {/* Terminal-style tagline */}
         <div className="text-xl md:text-2xl text-terminal-gray font-mono mb-12">
           <span className="text-terminal-green">user@portfolio:~$ </span>
