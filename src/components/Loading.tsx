@@ -58,10 +58,16 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
         </div>
 
         {/* Loading message */}
-        <h2 className="text-2xl md:text-3xl font-mono text-terminal-green mb-12 tracking-wider min-h-[3rem] flex items-center justify-center">
-          {messages[messageIndex]}
-          <span className="animate-pulse ml-1">...</span>
+        <h2 className="text-2xl md:text-3xl font-mono text-terminal-green mb-8 tracking-wider min-h-[3rem] flex items-center justify-center">
+          LOADING<span className="animate-pulse">...</span>
         </h2>
+        
+        {/* Progress percentage */}
+        <div className="text-right mb-4">
+          <span className="text-terminal-cyan font-mono text-xl font-bold">
+            {Math.floor(progress)}%
+          </span>
+        </div>
 
         {/* Terminal-style progress bar */}
         <div className="w-full mb-6 font-mono">
@@ -71,7 +77,7 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
               <span className="text-terminal-green mr-2 text-sm">[</span>
               <div className="flex-1 flex">
                 {Array.from({ length: 30 }, (_, i) => {
-                  const filled = i < Math.floor((progress / 100) * 30);
+                  const filled = i <= Math.floor((progress / 100) * 29);
                   return (
                     <span
                       key={i}
@@ -89,12 +95,6 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
               <span className="text-terminal-green ml-2 text-sm">]</span>
             </div>
             
-            {/* Progress percentage */}
-            <div className="text-center">
-              <span className="text-terminal-cyan font-mono text-sm">
-                {Math.floor(progress)}%
-              </span>
-            </div>
           </div>
         </div>
 
