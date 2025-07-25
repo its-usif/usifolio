@@ -1,3 +1,5 @@
+import usifolioLoading from "@/assets/usifolio-loading.jpg";
+
 const Projects = () => {
   const projects = [
     {
@@ -6,7 +8,7 @@ const Projects = () => {
       tech: ["React", "TypeScript", "Tailwind CSS"],
       status: "Live",
       link: "#",
-      image: "photo-1498050108023-4542c06a5843"
+      image: usifolioLoading
     },
     {
       title: "Lab Portal",
@@ -46,7 +48,7 @@ const Projects = () => {
               <div className="md:w-1/3">
                 <div className="aspect-video bg-terminal-gray/10 rounded-lg overflow-hidden border border-terminal-gray/20">
                   <img
-                    src={`https://images.unsplash.com/${project.image}?w=400&h=240&fit=crop&crop=entropy&cs=tinysrgb`}
+                    src={typeof project.image === 'string' ? `https://images.unsplash.com/${project.image}?w=400&h=240&fit=crop&crop=entropy&cs=tinysrgb` : project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
