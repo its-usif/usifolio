@@ -22,7 +22,7 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prevProgress) => {
-        const newProgress = prevProgress + 1.5;
+        const newProgress = Math.min(prevProgress + 1.5, 100);
         
         // Update message based on progress
         const newMessageIndex = Math.floor((newProgress / 100) * (messages.length - 1));
@@ -70,18 +70,21 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
             <div className="flex items-center mb-2">
               <span className="text-terminal-green mr-2 text-sm">[</span>
               <div className="flex-1 flex">
-                {Array.from({ length: 30 }, (_, i) => (
-                  <span
-                    key={i}
-                    className={`text-sm ${
-                      i < (progress / 100) * 30
-                        ? "text-terminal-green"
-                        : "text-terminal-gray/30"
-                    }`}
-                  >
-                    ■
-                  </span>
-                ))}
+                {Array.from({ length: 30 }, (_, i) => {
+                  const filled = i < Math.floor((progress / 100) * 30);
+                  return (
+                    <span
+                      key={i}
+                      className={`text-sm transition-colors duration-100 ${
+                        filled
+                          ? "text-terminal-green"
+                          : "text-terminal-gray/30"
+                      }`}
+                    >
+                      ■
+                    </span>
+                  );
+                })}
               </div>
               <span className="text-terminal-green ml-2 text-sm">]</span>
             </div>
