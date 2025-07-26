@@ -23,7 +23,7 @@ const Projects = () => {
       description: "Inventory optimization and database alignment using Vertere LIMS",
       tech: ["Python", "Database", "LIMS"],
       status: "Completed",
-      link: "https://hbku.vimenterprise.com/hbku",
+      link: "#",
       image: "photo-1487058792275-0ad4aaf24ca7"
     }
   ];
