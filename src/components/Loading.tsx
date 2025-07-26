@@ -50,7 +50,7 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
         <div className="mb-12 relative flex justify-center">
           <div className="w-20 h-20 rounded-full overflow-hidden border border-terminal-green/50 shadow-lg shadow-terminal-green/20 animate-pulse">
             <img 
-              src={yousifPortrait} 
+              src="/lovable-uploads/8985386a-b248-4191-b8bb-c1f9be752965.png" 
               alt="Yousif Ahmed" 
               className="w-full h-full object-cover"
             />
