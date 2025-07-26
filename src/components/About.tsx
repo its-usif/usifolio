@@ -27,47 +27,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Skills Section */}
-        <div className="terminal-section p-8 rounded-lg">
-          <div className="text-terminal-green text-sm mb-4">
-            <span className="text-terminal-gray"># </span>skills.py
-          </div>
-          
-          <div className="font-mono text-terminal-gray">
-            <div className="text-terminal-magenta mb-4">Skills = [</div>
-            
-            <div className="ml-4 space-y-2">
-              <div className="hover-glow p-2 rounded">
-                <span className="text-terminal-cyan">"Linux"</span><span className="text-terminal-gray">,</span>
-              </div>
-              <div className="hover-glow p-2 rounded">
-                <span className="text-terminal-cyan">"Python (Colab)"</span><span className="text-terminal-gray">,</span>
-              </div>
-              <div className="hover-glow p-2 rounded">
-                <span className="text-terminal-cyan">"Arduino"</span><span className="text-terminal-gray">,</span>
-              </div>
-              <div className="hover-glow p-2 rounded">
-                <span className="text-terminal-cyan">"Microsoft Office"</span><span className="text-terminal-gray">,</span>
-              </div>
-              <div className="hover-glow p-2 rounded">
-                <span className="text-terminal-cyan">"React"</span><span className="text-terminal-gray">,</span>
-              </div>
-              <div className="hover-glow p-2 rounded">
-                <span className="text-terminal-cyan">"TypeScript"</span><span className="text-terminal-gray">,</span>
-              </div>
-              <div className="hover-glow p-2 rounded">
-                <span className="text-terminal-cyan">"Database Management"</span>
-              </div>
-            </div>
-            
-            <div className="text-terminal-magenta mt-4">]</div>
-            
-            <div className="mt-6 text-terminal-gray">
-              <span className="text-terminal-green">print</span>(
-              <span className="text-terminal-cyan">"Always learning, always building"</span>)
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
