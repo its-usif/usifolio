@@ -41,41 +41,32 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
   }, [onLoadingComplete]);
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center relative overflow-hidden px-6">
       {/* Matrix background */}
       <div className="matrix-lines opacity-30"></div>
       
-      <div className="text-center z-10 px-6 max-w-lg w-full">
-        {/* Small animated profile picture */}
-        <div className="mb-12 relative flex justify-center">
-          <div className="w-20 h-20 rounded-full overflow-hidden border border-terminal-green/50 shadow-lg shadow-terminal-green/20 animate-pulse">
-            <img 
-              src="/lovable-uploads/8985386a-b248-4191-b8bb-c1f9be752965.png" 
-              alt="Yousif Ahmed" 
-              className="w-full h-full object-cover"
-            />
-          </div>
+      <div className="w-full max-w-2xl z-10 space-y-8">
+        {/* Loading message at top */}
+        <div className="text-left">
+          <h2 className="text-2xl md:text-3xl font-mono text-terminal-green tracking-wider">
+            {messages[messageIndex]}
+            <span className="animate-pulse ml-1">...</span>
+          </h2>
         </div>
 
-        {/* Loading message */}
-        <h2 className="text-2xl md:text-3xl font-mono text-terminal-green mb-12 tracking-wider min-h-[3rem] flex items-center justify-center">
-          {messages[messageIndex]}
-          <span className="animate-pulse ml-1">...</span>
-        </h2>
-
         {/* Terminal-style progress bar */}
-        <div className="w-full mb-6 font-mono">
-          <div className="border border-terminal-green/50 bg-terminal-dark p-4 relative">
+        <div className="w-full font-mono">
+          <div className="border border-terminal-green/50 bg-terminal-dark p-6 relative">
             {/* Progress bar background */}
-            <div className="flex items-center mb-2">
-              <span className="text-terminal-green mr-2 text-sm">[</span>
+            <div className="flex items-center">
+              <span className="text-terminal-green mr-2 text-lg">[</span>
               <div className="flex-1 flex">
-                {Array.from({ length: 30 }, (_, i) => {
-                  const filled = progress >= 100 ? true : i < Math.floor((progress / 100) * 30);
+                {Array.from({ length: 50 }, (_, i) => {
+                  const filled = progress >= 100 ? true : i < Math.floor((progress / 100) * 50);
                   return (
                     <span
                       key={i}
-                      className={`text-sm transition-colors duration-100 ${
+                      className={`text-lg transition-colors duration-100 ${
                         filled
                           ? "text-terminal-green"
                           : "text-terminal-gray/30"
@@ -86,22 +77,28 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
                   );
                 })}
               </div>
-              <span className="text-terminal-green ml-2 text-sm">]</span>
-            </div>
-            
-            {/* Progress percentage */}
-            <div className="text-center">
-              <span className="text-terminal-cyan font-mono text-sm">
-                {Math.floor(progress)}%
-              </span>
+              <span className="text-terminal-green ml-2 text-lg">]</span>
             </div>
           </div>
         </div>
 
-        {/* Additional terminal info */}
-        <div className="text-terminal-gray/70 font-mono text-xs space-y-1">
-          <p>System: Portfolio OS v2.1</p>
-          <p>Loading user profile...</p>
+        {/* Status message below progress bar */}
+        <div className="text-left">
+          <p className="text-terminal-cyan font-mono text-lg">
+            {progress < 100 ? `Loading... ${Math.floor(progress)}%` : "System Ready!"}
+          </p>
+        </div>
+
+        {/* Character image at bottom */}
+        <div className="flex justify-center pt-8">
+          <div className="w-32 h-32 relative">
+            {/* You can replace this src with your character image */}
+            <img 
+              src="/lovable-uploads/8985386a-b248-4191-b8bb-c1f9be752965.png" 
+              alt="Character waving" 
+              className="w-full h-full object-contain drop-shadow-lg animate-pulse"
+            />
+          </div>
         </div>
       </div>
     </div>
