@@ -58,36 +58,43 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
         </div>
 
         {/* Loading message */}
-        <h2 className="text-2xl md:text-3xl font-mono text-terminal-green mb-12 tracking-wider">
-          LOADING...
+        <h2 className="text-2xl md:text-3xl font-mono text-terminal-green mb-12 tracking-wider min-h-[3rem] flex items-center justify-center">
+          {messages[messageIndex]}
+          <span className="animate-pulse ml-1">...</span>
         </h2>
 
-        {/* Retro-style progress bar */}
-        <div className="w-full mb-6 font-mono max-w-md mx-auto">
-          {/* Progress bar container */}
-          <div className="border-2 border-terminal-green bg-terminal-dark p-1">
-            <div className="flex gap-0">
-              {Array.from({ length: 20 }, (_, i) => {
-                const filled = i < Math.floor((progress / 100) * 20);
-                return (
-                  <div
-                    key={i}
-                    className={`w-4 h-6 transition-colors duration-150 ${
-                      filled
-                        ? "bg-terminal-green"
-                        : "bg-terminal-dark border border-terminal-green/20"
-                    }`}
-                  />
-                );
-              })}
+        {/* Terminal-style progress bar */}
+        <div className="w-full mb-6 font-mono">
+          <div className="border border-terminal-green/50 bg-terminal-dark p-4 relative">
+            {/* Progress bar background */}
+            <div className="flex items-center mb-2">
+              <span className="text-terminal-green mr-2 text-sm">[</span>
+              <div className="flex-1 flex">
+                {Array.from({ length: 30 }, (_, i) => {
+                  const filled = i < Math.floor((progress / 100) * 30);
+                  return (
+                    <span
+                      key={i}
+                      className={`text-sm transition-colors duration-100 ${
+                        filled
+                          ? "text-terminal-green"
+                          : "text-terminal-gray/30"
+                      }`}
+                    >
+                      ■
+                    </span>
+                  );
+                })}
+              </div>
+              <span className="text-terminal-green ml-2 text-sm">]</span>
             </div>
-          </div>
-          
-          {/* Progress percentage */}
-          <div className="text-center mt-4">
-            <span className="text-terminal-cyan font-mono text-sm">
-              {Math.floor(progress)}%
-            </span>
+            
+            {/* Progress percentage */}
+            <div className="text-center">
+              <span className="text-terminal-cyan font-mono text-sm">
+                {Math.floor(progress)}%
+              </span>
+            </div>
           </div>
         </div>
 
