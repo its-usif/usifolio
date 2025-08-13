@@ -62,7 +62,7 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
               <span className="text-terminal-green mr-2 text-lg">[</span>
               <div className="flex-1 flex">
                 {Array.from({ length: 50 }, (_, i) => {
-                  const filled = progress >= 100 ? true : i < Math.floor((progress / 100) * 50);
+                  const filled = i < Math.ceil((progress / 100) * 50);
                   return (
                     <span
                       key={i}
