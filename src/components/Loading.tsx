@@ -94,8 +94,8 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
           <div className="w-32 h-32 relative">
             {/* You can replace this src with your character image */}
             <img 
-              src="/lovable-uploads/02d5e5c5-bbf4-4dee-8a4e-d733acc45287.png" 
-              alt="Character waving" 
+              src="/lovable-uploads/34872503-04f9-454a-9a1f-16d4590e603f.png" 
+              alt="Character saying hello and waving" 
               className="w-full h-full object-contain drop-shadow-lg animate-pulse"
             />
           </div>
