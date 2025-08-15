@@ -91,7 +91,7 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
 
         {/* Character image at bottom */}
         <div className="flex justify-center pt-8">
-          <div className="w-32 h-32 relative">
+          <div className="w-40 h-40 relative">
             {/* You can replace this src with your character image */}
             <img 
               src="/lovable-uploads/34872503-04f9-454a-9a1f-16d4590e603f.png" 
