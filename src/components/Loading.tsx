@@ -77,7 +77,6 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
                   );
                 })}
               </div>
-              <span className="text-terminal-green ml-2 text-lg">]</span>
             </div>
           </div>
         </div>
