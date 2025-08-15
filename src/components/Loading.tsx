@@ -59,7 +59,6 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
           <div className="border border-terminal-green/50 bg-terminal-dark p-6 relative">
             {/* Progress bar background */}
             <div className="flex items-center">
-              <span className="text-terminal-green mr-2 text-lg">[</span>
               <div className="flex-1 flex">
                 {Array.from({ length: 50 }, (_, i) => {
                   const filled = i <= Math.floor((progress / 100) * 49);
