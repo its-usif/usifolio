@@ -60,6 +60,13 @@ const Hero = () => {
           </button>
           <span className="text-terminal-gray">·</span>
           <button 
+            onClick={() => document.getElementById('blogs')?.scrollIntoView({ behavior: 'smooth' })}
+            className="text-terminal-gray hover:text-terminal-cyan transition-colors duration-300 hover-glow px-4 py-2 border border-terminal-gray/30 hover:border-terminal-cyan/50"
+          >
+            Blogs
+          </button>
+          <span className="text-terminal-gray">·</span>
+          <button 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="text-terminal-gray hover:text-terminal-cyan transition-colors duration-300 hover-glow px-4 py-2 border border-terminal-gray/30 hover:border-terminal-cyan/50"
           >
