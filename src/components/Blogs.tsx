@@ -1,25 +1,18 @@
 const Blogs = () => {
   const blogPosts = [
     {
-      title: "Building Scalable React Applications",
-      date: "2024-01-15",
-      description: "Exploring best practices for building maintainable and scalable React applications with modern tooling.",
-      tags: ["React", "TypeScript", "Architecture"],
-      readTime: "5 min read"
+      title: "Engineering for Impact: My Journey at HBKU",
+      date: "2024-03-15", 
+      description: "As a computer engineering student at HBKU, I see my degree as more than just a way to get a job. It's about using technology to make life better for people, focusing on accessible solutions and real-world impact.",
+      tags: ["Engineering", "Impact", "Education"],
+      readTime: "4 min read"
     },
     {
-      title: "The Future of Web Development",
-      date: "2024-01-08",
-      description: "Discussing emerging trends and technologies that are shaping the future of web development.",
-      tags: ["WebDev", "Trends", "Future"],
-      readTime: "8 min read"
-    },
-    {
-      title: "Optimizing Performance in Modern Web Apps",
-      date: "2024-01-01",
-      description: "Techniques and strategies for optimizing performance in modern web applications.",
-      tags: ["Performance", "Optimization", "JavaScript"],
-      readTime: "6 min read"
+      title: "Reflecting on Professional Growth",
+      date: "2024-03-08",
+      description: "Looking back at my professional development journey as a junior in computer engineering - the progress made, lessons learned, and the path ahead toward meaningful career contributions.",
+      tags: ["Career", "Growth", "Reflection"],
+      readTime: "3 min read"
     }
   ];
 

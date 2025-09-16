@@ -12,14 +12,14 @@ const About = () => {
             
             <div className="mt-8 text-foreground">
               <p className="leading-relaxed">
-                I am Yousif Ahmed, a computer engineering student at Hamad Bin Khalifa University having passion for tech and design. 
-                I love building systems that are not only functional but also visually compelling. and also combining software with hardware to find solutions to real life issues.
+                My name is Yousif Ahmed, a junior computer engineering student at Hamad Bin Khalifa University, enthusiastic about both technology and design. 
+                Building systems with some amount of engineering and their aesthetic considerations is one of my interests. My other interests include combining software and hardware to provide solutions for real life problems.
               </p>
               <p className="leading-relaxed mt-4">
-                Outside the classroom, I'm into sports and music, and my secret sauce is the late-night energy I channel while coding to Drake.
+                Outside classroom, I love sports and music, and I usually get my greatest concentration and creativity during late night coding sessions.
               </p>
               <p className="leading-relaxed mt-4">
-                Following are some projects I have been involved with, and each one is a reflection of my interest in dealing with real life issues through clean, simple and user friendly technology.
+                These projects demonstrate how I foster my interest in addressing real life problems through clean, simple and easy to use technology.
               </p>
             </div>
           </div>
