@@ -11,7 +11,7 @@ const Projects = () => {
     title: "Lab Portal",
     description: "Internal tool for managing lab resources, updated frontend/backend",
     tech: ["React", "Node.js", "Database"],
-    status: "In Development",
+    status: "Completed",
     link: "its an internal and we cant view it",
     image: "photo-1461749280684-dccba630e2f6"
   }, {
