@@ -32,7 +32,15 @@ const Projects = () => {
         </div>
 
         <div className="space-y-8">
-          {projects.map((project, index) => <div key={index} className="terminal-section p-6 rounded-lg hover-glow cursor-pointer group flex flex-col md:flex-row gap-6">
+          {projects.map((project, index) => <div 
+            key={index} 
+            className="terminal-section p-6 rounded-lg hover-glow cursor-pointer group flex flex-col md:flex-row gap-6"
+            onClick={() => {
+              if (project.link.startsWith('http')) {
+                window.open(project.link, '_blank');
+              }
+            }}
+          >
               {/* Project Image */}
               <div className="md:w-1/3">
                 <div className="aspect-video bg-terminal-gray/10 rounded-lg overflow-hidden border border-terminal-gray/20">
