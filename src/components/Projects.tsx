@@ -5,21 +5,21 @@ const Projects = () => {
     description: "This exact site, self-built for branding",
     tech: ["React", "TypeScript", "Tailwind CSS"],
     status: "Live",
-    link: "#",
+    link: "you are here already",
     image: usifolioLoading
   }, {
     title: "Lab Portal",
     description: "Internal tool for managing lab resources, updated frontend/backend",
     tech: ["React", "Node.js", "Database"],
     status: "In Development",
-    link: "#",
+    link: "its an internal and we cant view it",
     image: "photo-1461749280684-dccba630e2f6"
   }, {
     title: "Vertere Project",
     description: "Inventory optimization and database alignment using Vertere LIMS",
     tech: ["Python", "Database", "LIMS"],
     status: "Completed",
-    link: "#",
+    link: "https://hbku.vimenterprise.com/Login.aspx",
     image: "photo-1487058792275-0ad4aaf24ca7"
   }];
   return <section id="projects" className="min-h-screen flex items-center py-20">
