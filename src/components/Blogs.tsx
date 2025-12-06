@@ -96,26 +96,30 @@ const Blogs = () => {
     {
       title: "Problem Statement",
       subtitle: "Project 1",
-      description: "Upload your problem statement document here.",
-      placeholder: "No file uploaded yet"
+      description: "EV Charging Station Scarcity in Qatar - Problem analysis and scope definition.",
+      file: "/projects/Problem_Statement.pdf",
+      fileType: "PDF"
     },
     {
       title: "Technical Report",
       subtitle: "Project 2",
-      description: "Upload your technical report document here.",
-      placeholder: "No file uploaded yet"
+      description: "Comprehensive technical report on Esh7an - Smart EV Charging Solution.",
+      file: "/projects/Technical_Report.pdf",
+      fileType: "PDF"
     },
     {
       title: "Oral Presentation",
       subtitle: "Presentation Materials",
-      description: "Upload your presentation slides and materials here.",
-      placeholder: "No file uploaded yet"
+      description: "Final presentation slides for the Esh7an project.",
+      file: "/projects/Oral_Presentation.pptx",
+      fileType: "PPTX"
     },
     {
       title: "Research Poster",
       subtitle: "Visual Presentation",
-      description: "Upload your research poster here.",
-      placeholder: "No file uploaded yet"
+      description: "Research poster showcasing the Esh7an solution.",
+      file: "/projects/Research_Poster.pdf",
+      fileType: "PDF"
     }
   ];
 
@@ -242,11 +246,19 @@ const Blogs = () => {
                 <p className="text-terminal-gray/80 text-sm mb-4">
                   {project.description}
                 </p>
-                <div className="border-2 border-dashed border-terminal-gray/30 p-6 text-center hover:border-terminal-green/50 transition-colors cursor-pointer">
-                  <Upload className="w-8 h-8 text-terminal-gray/50 mx-auto mb-2" />
-                  <p className="text-sm text-terminal-gray/50">{project.placeholder}</p>
-                  <p className="text-xs text-terminal-gray/40 mt-1">Click to upload PDF, images, or links</p>
-                </div>
+                <a 
+                  href={project.file} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 border border-terminal-green/50 p-4 hover:bg-terminal-green/10 transition-colors"
+                >
+                  <FileText className="w-6 h-6 text-terminal-green" />
+                  <div className="flex-1">
+                    <p className="text-sm text-terminal-green font-medium">View {project.fileType}</p>
+                    <p className="text-xs text-terminal-gray/60">Click to open document</p>
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-terminal-green" />
+                </a>
               </div>
             ))}
           </div>
