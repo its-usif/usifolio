@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ChevronDown, ChevronRight, FileText, Upload, ExternalLink } from "lucide-react";
-
+import { ChevronDown, ChevronRight, FileText, ExternalLink } from "lucide-react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 const Blogs = () => {
   const [expandedBlogs, setExpandedBlogs] = useState<number[]>([]);
   const [expandedDeliverables, setExpandedDeliverables] = useState<string[]>([]);
@@ -127,27 +127,65 @@ const Blogs = () => {
     {
       id: "charter",
       title: "Team Charter",
-      description: "Upload your team charter document outlining roles, responsibilities, and expectations."
+      file: "/projects/Team_Charter.pdf"
     },
     {
-      id: "memos",
-      title: "Group Memos",
-      description: "Upload group memos and internal communications."
+      id: "memo1",
+      title: "Memo 1",
+      file: "/projects/Memo_1.pdf"
+    },
+    {
+      id: "memo2",
+      title: "Memo 2 — Issue Statement",
+      file: "/projects/Memo_2.pdf"
+    },
+    {
+      id: "memo3",
+      title: "Memo 3 — Potential Solutions",
+      file: "/projects/Memo_3.pdf"
+    },
+    {
+      id: "meeting",
+      title: "Meeting Notes",
+      file: "/projects/Meeting_Notes.pdf"
+    },
+    {
+      id: "problem",
+      title: "Problem Statement",
+      file: "/projects/Problem_Statement.pdf"
     },
     {
       id: "matrix",
       title: "Decision Matrix",
-      description: "Upload your decision matrix for project choices."
+      file: null,
+      showChart: true
+    }
+  ];
+
+  const decisionMatrixData = [
+    {
+      name: "EV Charging Station Scarcity",
+      "QNV 2030": 5,
+      "Engineering Focus": 5,
+      "Feasibility": 4,
+      "Impact": 5,
+      "Total": 19
     },
     {
-      id: "agendas",
-      title: "Meeting Agendas",
-      description: "Upload meeting agendas and notes."
+      name: "Air Pollution",
+      "QNV 2030": 5,
+      "Engineering Focus": 3,
+      "Feasibility": 3,
+      "Impact": 5,
+      "Total": 16
     },
     {
-      id: "other",
-      title: "Other Planning Documents",
-      description: "Upload any other planning or coordination documents."
+      name: "World Cup Stadiums",
+      "QNV 2030": 3,
+      "Engineering Focus": 3,
+      "Feasibility": 2,
+      "Impact": 3,
+      "Total": 11
     }
   ];
 
@@ -295,14 +333,66 @@ const Blogs = () => {
                 
                 {expandedDeliverables.includes(item.id) && (
                   <div className="px-4 pb-4">
-                    <p className="text-terminal-gray/80 text-sm mb-4">
-                      {item.description}
-                    </p>
-                    <div className="border-2 border-dashed border-terminal-gray/30 p-6 text-center hover:border-terminal-green/50 transition-colors cursor-pointer">
-                      <Upload className="w-8 h-8 text-terminal-gray/50 mx-auto mb-2" />
-                      <p className="text-sm text-terminal-gray/50">No files uploaded yet</p>
-                      <p className="text-xs text-terminal-gray/40 mt-1">Click to upload documents</p>
-                    </div>
+                    {item.file && (
+                      <a 
+                        href={item.file} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 border border-terminal-green/50 p-4 hover:bg-terminal-green/10 transition-colors"
+                      >
+                        <FileText className="w-6 h-6 text-terminal-green" />
+                        <div className="flex-1">
+                          <p className="text-sm text-terminal-green font-medium">View PDF</p>
+                          <p className="text-xs text-terminal-gray/60">Click to open document</p>
+                        </div>
+                        <ExternalLink className="w-4 h-4 text-terminal-green" />
+                      </a>
+                    )}
+                    
+                    {item.showChart && (
+                      <div className="mt-4">
+                        <h4 className="text-terminal-cyan font-semibold mb-4">Decision Matrix Comparison</h4>
+                        <div className="h-80 w-full">
+                          <ResponsiveContainer width="100%" height="100%">
+                            <BarChart
+                              data={decisionMatrixData}
+                              margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
+                            >
+                              <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+                              <XAxis 
+                                dataKey="name" 
+                                tick={{ fill: '#888', fontSize: 11 }}
+                                angle={-15}
+                                textAnchor="end"
+                                height={60}
+                              />
+                              <YAxis tick={{ fill: '#888' }} domain={[0, 6]} />
+                              <Tooltip 
+                                contentStyle={{ 
+                                  backgroundColor: '#1a1a1a', 
+                                  border: '1px solid #39ff14',
+                                  color: '#fff'
+                                }}
+                              />
+                              <Legend wrapperStyle={{ paddingTop: '10px' }} />
+                              <Bar dataKey="QNV 2030" fill="#39ff14" />
+                              <Bar dataKey="Engineering Focus" fill="#00d4ff" />
+                              <Bar dataKey="Feasibility" fill="#ff6b9d" />
+                              <Bar dataKey="Impact" fill="#ffd93d" />
+                            </BarChart>
+                          </ResponsiveContainer>
+                        </div>
+                        <div className="mt-4 grid grid-cols-3 gap-4 text-center">
+                          {decisionMatrixData.map((item, index) => (
+                            <div key={index} className="border border-terminal-gray/30 p-3">
+                              <p className="text-xs text-terminal-gray/70 mb-1">{item.name}</p>
+                              <p className="text-2xl font-bold text-terminal-green">{item.Total}</p>
+                              <p className="text-xs text-terminal-gray/50">Total Score</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
