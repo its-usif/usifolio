@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, ChevronRight, FileText, ExternalLink } from "lucide-react";
+import { ChevronDown, ChevronRight, FileText, Download } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 const Blogs = () => {
   const [expandedBlogs, setExpandedBlogs] = useState<number[]>([]);
@@ -286,16 +286,15 @@ const Blogs = () => {
                 </p>
                 <a 
                   href={project.file} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                  download
                   className="flex items-center gap-3 border border-terminal-green/50 p-4 hover:bg-terminal-green/10 transition-colors"
                 >
                   <FileText className="w-6 h-6 text-terminal-green" />
                   <div className="flex-1">
-                    <p className="text-sm text-terminal-green font-medium">View {project.fileType}</p>
-                    <p className="text-xs text-terminal-gray/60">Click to open document</p>
+                    <p className="text-sm text-terminal-green font-medium">Download {project.fileType}</p>
+                    <p className="text-xs text-terminal-gray/60">Click to download document</p>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-terminal-green" />
+                  <Download className="w-4 h-4 text-terminal-green" />
                 </a>
               </div>
             ))}
@@ -336,16 +335,15 @@ const Blogs = () => {
                     {item.file && (
                       <a 
                         href={item.file} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
+                        download
                         className="flex items-center gap-3 border border-terminal-green/50 p-4 hover:bg-terminal-green/10 transition-colors"
                       >
                         <FileText className="w-6 h-6 text-terminal-green" />
                         <div className="flex-1">
-                          <p className="text-sm text-terminal-green font-medium">View PDF</p>
-                          <p className="text-xs text-terminal-gray/60">Click to open document</p>
+                          <p className="text-sm text-terminal-green font-medium">Download PDF</p>
+                          <p className="text-xs text-terminal-gray/60">Click to download document</p>
                         </div>
-                        <ExternalLink className="w-4 h-4 text-terminal-green" />
+                        <Download className="w-4 h-4 text-terminal-green" />
                       </a>
                     )}
                     
