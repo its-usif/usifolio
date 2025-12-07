@@ -1,4 +1,7 @@
 import usifolioLoading from "@/assets/usifolio-loading.jpg";
+import labPortalPreview from "@/assets/lab-portal-preview.jpg";
+import verterePreview from "@/assets/vertere-preview.jpg";
+
 const Projects = () => {
   const projects = [{
     title: "Usifolio",
@@ -13,14 +16,14 @@ const Projects = () => {
     tech: ["React", "Node.js", "Database"],
     status: "Completed",
     link: "its an internal and we cant view it",
-    image: "photo-1461749280684-dccba630e2f6"
+    image: labPortalPreview
   }, {
     title: "Vertere Project",
     description: "Inventory optimization and database alignment using Vertere LIMS",
     tech: ["Python", "Database", "LIMS"],
     status: "Completed",
     link: "https://hbku.vimenterprise.com/Login.aspx",
-    image: "photo-1487058792275-0ad4aaf24ca7"
+    image: verterePreview
   }];
   return <section id="projects" className="min-h-screen flex items-center py-20">
       <div className="container mx-auto px-6">
@@ -41,10 +44,13 @@ const Projects = () => {
               }
             }}
           >
-              {/* Project Image */}
               <div className="md:w-1/3">
                 <div className="aspect-video bg-terminal-gray/10 rounded-lg overflow-hidden border border-terminal-gray/20">
-                  
+                  <img 
+                    src={project.image} 
+                    alt={`${project.title} preview`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
 
