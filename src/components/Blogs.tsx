@@ -220,7 +220,6 @@ const Blogs = () => {
                       <span className="text-xs px-2 py-1 border border-terminal-green/50 text-terminal-green">
                         {post.prompt}
                       </span>
-                      <span className="text-sm text-terminal-gray/70">{post.date}</span>
                       <span className="text-sm text-terminal-gray/70">{post.readTime}</span>
                     </div>
                     <h4 className="text-lg md:text-xl font-semibold text-terminal-cyan group-hover:text-terminal-green transition-colors">
