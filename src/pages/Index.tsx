@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import About from "../components/About";
@@ -5,15 +6,34 @@ import Projects from "../components/Projects";
 import Blogs from "../components/Blogs";
 import Contact from "../components/Contact";
 
+export type TabType = "home" | "about" | "projects" | "engl210" | "contact";
+
 const Index = () => {
+  const [activeTab, setActiveTab] = useState<TabType>("home");
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "home":
+        return <Hero />;
+      case "about":
+        return <About />;
+      case "projects":
+        return <Projects />;
+      case "engl210":
+        return <Blogs />;
+      case "contact":
+        return <Contact />;
+      default:
+        return <Hero />;
+    }
+  };
+
   return (
-    <div className="bg-background text-foreground overflow-x-hidden">
-      <Header />
-      <Hero />
-      <About />
-      <Projects />
-      <Blogs />
-      <Contact />
+    <div className="bg-background text-foreground overflow-x-hidden min-h-screen">
+      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <main className="pt-16">
+        {renderContent()}
+      </main>
     </div>
   );
 };
