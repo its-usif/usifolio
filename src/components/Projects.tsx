@@ -1,4 +1,4 @@
-import usifolioLoading from "@/assets/usifolio-loading.jpg";
+import usifolioPreview from "@/assets/usifolio-preview.png";
 import labPortalPreview from "@/assets/lab-portal-preview.jpg";
 import verterePreview from "@/assets/vertere-preview.jpg";
 
@@ -9,7 +9,7 @@ const Projects = () => {
     tech: ["React", "TypeScript", "Tailwind CSS"],
     status: "Live",
     link: "you are here already",
-    image: usifolioLoading
+    image: usifolioPreview
   }, {
     title: "Lab Portal",
     description: "Internal tool for managing lab resources, updated frontend/backend",
