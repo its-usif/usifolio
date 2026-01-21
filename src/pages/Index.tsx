@@ -6,7 +6,7 @@ import Projects from "../components/Projects";
 import Blogs from "../components/Blogs";
 import Contact from "../components/Contact";
 
-export type TabType = "home" | "about" | "projects" | "engl210" | "contact";
+export type TabType = "home" | "about" | "projects" | "contact";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState<TabType>("home");
@@ -19,8 +19,6 @@ const Index = () => {
         return <About />;
       case "projects":
         return <Projects />;
-      case "engl210":
-        return <Blogs />;
       case "contact":
         return <Contact />;
       default:
