@@ -1,6 +1,7 @@
 import usifolioPreview from "@/assets/usifolio-preview.png";
 import labPortalPreview from "@/assets/lab-portal-preview.jpg";
 import verterePreview from "@/assets/vertere-preview.jpg";
+import esh7anPreview from "@/assets/esh7an-preview.jpg";
 
 const Projects = () => {
   const projects = [{
@@ -10,6 +11,13 @@ const Projects = () => {
     status: "Live",
     link: "you are here already",
     image: usifolioPreview
+  }, {
+    title: "Esh7an",
+    description: "EV Charging Optimization Tool — AI- and GIS-based tool using traffic flow data to support EV charging station planning in collaboration with Tarsheed/Kahramaa mentors.",
+    tech: ["AI", "GIS", "React"],
+    status: "Live",
+    link: "https://esh7an.lovable.app",
+    image: esh7anPreview
   }, {
     title: "Lab Portal",
     description: "Internal tool for managing lab resources, updated frontend/backend",
