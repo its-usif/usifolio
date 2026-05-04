@@ -56,7 +56,7 @@ const Contact = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="terminal-section p-8 rounded-lg">
+          <div className="terminal-section p-4 sm:p-8 rounded-lg">
             <div className="text-terminal-green text-sm mb-6">
               <span className="text-terminal-gray">$ </span>cat contact.txt
             </div>
@@ -65,18 +65,18 @@ const Contact = () => {
               {contacts.map((contact, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-4 hover-glow cursor-pointer rounded border border-terminal-gray/20 hover:border-terminal-cyan/50 transition-all duration-300"
+                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-4 hover-glow cursor-pointer rounded border border-terminal-gray/20 hover:border-terminal-cyan/50 transition-all duration-300"
                   onClick={contact.action}
                 >
-                  <div className="flex items-center space-x-4">
-                    <contact.icon className="w-6 h-6 text-terminal-cyan" />
-                    <div>
+                  <div className="flex items-center space-x-4 min-w-0 flex-1">
+                    <contact.icon className="w-6 h-6 text-terminal-cyan shrink-0" />
+                    <div className="min-w-0 flex-1">
                       <div className="text-terminal-cyan text-sm">{contact.label}</div>
-                      <div className="text-foreground">{contact.value}</div>
+                      <div className="text-foreground text-sm sm:text-base break-all">{contact.value}</div>
                     </div>
                   </div>
                   
-                  <div className="text-terminal-gray text-sm">
+                  <div className="text-terminal-gray text-xs sm:text-sm sm:text-right shrink-0 sm:ml-4 pl-10 sm:pl-0">
                     {contact.copyable ? (
                       copiedEmail && contact.label === "Email" ? (
                         <span className="text-terminal-green">Copied!</span>
