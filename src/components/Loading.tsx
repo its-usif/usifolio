@@ -56,26 +56,12 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
 
         {/* Terminal-style progress bar */}
         <div className="w-full font-mono">
-          <div className="border border-terminal-green/50 bg-terminal-dark p-6 relative">
-            {/* Progress bar background */}
-            <div className="flex items-center">
-              <div className="flex-1 flex">
-                {Array.from({ length: 50 }, (_, i) => {
-                  const filled = i <= Math.floor((progress / 100) * 49);
-                  return (
-                    <span
-                      key={i}
-                      className={`text-lg transition-colors duration-100 ${
-                        filled
-                          ? "text-terminal-green"
-                          : "text-terminal-gray/30"
-                      }`}
-                    >
-                      ■
-                    </span>
-                  );
-                })}
-              </div>
+          <div className="border border-terminal-green/50 bg-terminal-dark p-3 sm:p-6 relative overflow-hidden">
+            <div className="w-full h-6 sm:h-8 bg-terminal-gray/20 relative overflow-hidden">
+              <div
+                className="h-full bg-terminal-green transition-all duration-100 ease-linear"
+                style={{ width: `${progress}%` }}
+              />
             </div>
           </div>
         </div>
