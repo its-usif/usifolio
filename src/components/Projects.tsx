@@ -19,8 +19,6 @@ type Project = {
   context: string;
   description: string;
   tech: string[];
-  status: string;
-  label?: string;
   link?: string;
   image?: string;
   imageCaption?: string;
@@ -33,26 +31,21 @@ const projects: Project[] = [
     context: "Qai × Hugging Face Hackathon · Finalist team · November 2026",
     description: "Co-built with the ForeLab team: AI-assisted container-damage inspection using RF-DETR, OWLv2, and a fine-tuned Qwen3-VL verifier. The bilingual Gradio demo highlights detections, flags uncertain cases for review, and generates English or Arabic PDF reports.",
     tech: ["Python", "Computer Vision", "RF-DETR", "Qwen3-VL", "Gradio"],
-    status: "Prototype",
-    label: "TEAM PROJECT · HACKATHON FINALIST",
     image: cargolensPreview,
     link: "https://huggingface.co/spaces/Omar111199/team-qh-109-container-inspect-app",
   },
   {
     title: "ForeLab",
     context: "HBKU · Senior Design Project",
-    description: "Developing a portable, air-gapped digital-forensics system on NVIDIA Jetson hardware. The project brings local analysis tools and AI-assisted incident reporting together while keeping evidence on-site.",
+    description: "A senior design project developing a portable digital-forensics system on NVIDIA Jetson hardware. The aim is to run analysis tools and AI-assisted incident reporting locally, without sending evidence to cloud services.",
     tech: ["NVIDIA Jetson", "Local AI", "Digital Forensics", "Embedded Systems"],
-    status: "",
     image: forelabLogo,
   },
   {
     title: "Multi-Agent AI System",
     context: "Snoonu · AI Operations Internship",
-    description: "Designed and developed an AWS Bedrock-based multi-agent architecture that coordinates specialized AI agents to execute structured operational workflows.",
+    description: "Worked on an AWS Bedrock multi-agent architecture during my Snoonu internship, translating operational procedures into structured workflows with states, actions, guardrails, and escalation paths.",
     tech: ["AWS Bedrock", "Python", "Multi-Agent Systems", "AI", "Workflow Orchestration"],
-    status: "Proprietary",
-    label: "INTERNSHIP PROJECT · PROPRIETARY",
     detailId: "multi-agent",
     image: multiAgentPreview,
     imageCaption: "Architecture concept",
@@ -62,8 +55,6 @@ const projects: Project[] = [
     context: "Personal Project",
     description: "Started after my WHOOP subscription ended and an open-source health platform did not support the device. I began exploring direct BLE communication and building the missing personal iPhone integration.",
     tech: ["Swift", "Bluetooth Low Energy", "iOS", "Wearable Systems", "Health Data"],
-    status: "",
-    label: "PERSONAL PROJECT",
     detailId: "whoop",
     imageCaption: "UI concept · sample data",
     image: whoopDashboard,
@@ -71,9 +62,8 @@ const projects: Project[] = [
   {
     title: "Esh7an",
     context: "HBKU · Student Team Project",
-    description: "EV Charging Optimization Tool — AI- and GIS-based tool using traffic flow data to support EV charging station planning in collaboration with Tarsheed/Kahramaa mentors.",
+    description: "A student team prototype exploring EV charging-station planning in Qatar using traffic data, GIS, and AI-based planning ideas. Developed with feedback from KAHRAMAA/Tarsheed mentors.",
     tech: ["AI", "GIS", "React"],
-    status: "Live",
     link: "https://esh7an.lovable.app",
     image: esh7anPreview,
   },
@@ -81,26 +71,22 @@ const projects: Project[] = [
     title: "Lab Portal",
     context: "HBKU · Laboratory System Assistant",
     description: "Contributed frontend and backend updates to HBKU's internal Lab Portal, helping organize and access laboratory resources.",
-    tech: ["React", "Node.js", "Database"],
-    status: "Completed",
-    label: "COMPLETED · INTERNAL TOOL",
+    tech: ["Frontend", "Backend", "Laboratory Resources"],
     image: labPreview,
+    imageCaption: "Laboratory inventory reference",
   },
   {
     title: "Vertere Project",
     context: "HBKU · Facilities & Laboratory Systems",
-    description: "Audited and maintained chemical inventory records in Vértere LIMS, reconciling digital records with physical laboratory stock and improving data consistency.",
-    tech: ["Python", "Database", "LIMS"],
-    status: "Completed",
-    label: "COMPLETED · LABORATORY SYSTEMS",
+    description: "Audited and maintained chemical inventory records in Vértere LIMS, checking digital records against physical laboratory stock and correcting discrepancies.",
+    tech: ["Vértere LIMS", "Inventory Auditing", "Data Validation"],
     image: verterePreview,
   },
   {
     title: "Usifolio",
     context: "Personal Project",
-    description: "My personal portfolio: a terminal-inspired home for AI, automation, and engineering projects, built with React and TypeScript.",
+    description: "A personal portfolio to showcase my experience, technical projects, and interests in AI and automation. It brings my internship work, team projects, and personal experiments together in one place.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
-    status: "Live",
     link: "https://github.com/its-usif/usifolio",
     image: usifolioPreview,
   },
@@ -116,24 +102,23 @@ const Section = ({ number, title, children }: { number: string; title: string; c
 const ProjectDetails = ({ id }: { id: DetailId }) => {
   if (id === "multi-agent") return (
     <>
-      <Section number="01" title="OVERVIEW">An AWS Bedrock-based architecture for executing structured operational workflows through coordinated, specialized AI agents.</Section>
+      <Section number="01" title="OVERVIEW">Internship work on an AWS Bedrock multi-agent architecture for structured operational workflows.</Section>
       <Section number="02" title="THE PROBLEM">Operational procedures need explicit states, transitions, guardrails, and escalation paths before they can be executed reliably by an agent system.</Section>
       <Section number="03" title="MY CONTRIBUTION">Translated SOP logic into machine-readable workflows containing states, variables, guardrails, transitions, escalation conditions, and executable actions.</Section>
-      <Section number="04" title="ARCHITECTURE / APPROACH"><MultiAgentDiagram /></Section>
+      <Section number="04" title="ARCHITECTURE / APPROACH"><p className="mb-3">A simplified illustration of the approach, rather than a production architecture or screenshot.</p><MultiAgentDiagram /></Section>
       <Section number="05" title="TECHNOLOGIES">AWS Bedrock · Python · Multi-Agent Systems · AI · Workflow Orchestration</Section>
-      <Section number="06" title="STATUS"><span className="text-terminal-magenta">INTERNSHIP PROJECT · PROPRIETARY</span></Section>
     </>
   );
 
   if (id === "whoop") return (
     <>
-      <Section number="01" title="OVERVIEW">A personal iPhone tracker built around functional wearable hardware I already owned.</Section>
+      <Section number="01" title="OVERVIEW">A personal project exploring direct BLE communication between my WHOOP device and an iPhone. The dashboard cover is a UI concept with sample data, not a screenshot of a finished tracker.</Section>
       <Section number="02" title="THE PROBLEM">After my WHOOP subscription ended, the open-source health platform I wanted to use did not support the device. I began working on the missing integration instead of leaving the hardware unused.</Section>
-      <Section number="03" title="MY CONTRIBUTION">
+      <Section number="03" title="AREAS EXPLORED">
         <ul className="grid list-inside list-disc gap-1 sm:grid-cols-2">
           <li>BLE device communication</li><li>Service and characteristic discovery</li><li>Connection and handshake behavior</li><li>Synchronization and notifications</li><li>Wearable data handling</li><li>Custom tracker UI development</li>
         </ul>
-        <p className="mt-3">Historical WHOOP data helps preserve my personal baseline and continuity; it is not used to claim medical or scientific accuracy.</p>
+        <p className="mt-3">The work explores device connectivity and personal data handling; it does not establish validated recovery or health measurements.</p>
       </Section>
       <Section number="04" title="ARCHITECTURE / APPROACH"><WhoopFlowDiagram /></Section>
       <Section number="05" title="TECHNOLOGIES">Swift · Bluetooth Low Energy · iOS · Wearable Systems · Health Data</Section>
@@ -181,7 +166,7 @@ const Projects = () => {
                   <h3 className="mb-3 text-xl font-bold text-terminal-cyan transition-colors group-hover:text-terminal-green">{project.title}</h3>
                   <p className="mb-4 text-sm leading-relaxed text-terminal-gray">{project.description}</p>
                   <div className="mb-4 mt-auto flex flex-wrap gap-x-2 gap-y-1 pt-2 text-xs">
-                    <span className="text-terminal-magenta">stack = [</span>
+                    <span className="text-terminal-magenta">tools / focus = [</span>
                     {project.tech.map((tech, index) => <span className="text-terminal-cyan" key={tech}>"{tech}"{index < project.tech.length - 1 && <span className="text-terminal-gray">,</span>}</span>)}
                     <span className="text-terminal-magenta">]</span>
                   </div>
@@ -201,7 +186,7 @@ const Projects = () => {
 
         <div className="mt-12 text-center">
           <a href="https://github.com/its-usif" target="_blank" rel="noopener noreferrer" className="hover-glow inline-flex items-center space-x-2 rounded border border-terminal-gray/30 px-6 py-3 font-mono text-terminal-gray transition-colors duration-300 hover:border-terminal-green/50 hover:text-terminal-green">
-            <Github className="h-5 w-5" aria-hidden="true" /><span>View all projects on GitHub</span>
+            <Github className="h-5 w-5" aria-hidden="true" /><span>Explore my GitHub</span>
           </a>
         </div>
       </div>

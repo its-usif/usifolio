@@ -10,12 +10,12 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
   const [messageIndex, setMessageIndex] = useState(0);
 
   const messages = [
-    "Booting...",
-    "Loading System...",
-    "Downloading...",
-    "Initializing...",
-    "Almost There...",
-    "Nearly Done...",
+    "Opening Usifolio",
+    "Welcome",
+    "Experience & projects",
+    "AI & automation",
+    "Take a look around",
+    "Let's begin",
     "Ready!"
   ];
 

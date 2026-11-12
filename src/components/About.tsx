@@ -16,7 +16,7 @@ const About = () => (
             <p>I'm Yousif, a Computer Engineering student at Hamad Bin Khalifa University in Qatar. My main interest is AI and automation: understanding how work happens, finding the repetitive parts, and building systems that help people get things done.</p>
             <p>During my AI Operations internship at Snoonu, I worked on agent workflows with AWS Bedrock and refactored a Python IVR backend. That experience shaped how I approach automation: clear logic, reusable components, and a way to handle exceptions matter as much as the model.</p>
             <p>I also enjoy connecting software with the physical world. With my team, I co-built CargoLens for AI-assisted container-damage inspection at the Qai × Hugging Face hackathon. My senior design project, ForeLab, explores portable digital forensics and local AI on NVIDIA Jetson hardware.</p>
-            <p>My technical experience spans Python, APIs, React, databases, digital systems, and hands-on laboratory data work. I like learning by building, testing what actually works, and turning an idea into something someone can use.</p>
+            <p>My experience includes Python backends, API testing, web interfaces, digital systems coursework, and laboratory inventory data. This portfolio brings that work together, including team projects and personal experiments as well as internship experience.</p>
           </div>
         </div>
       </div>
