@@ -155,24 +155,24 @@ const Projects = () => {
           <div className="mx-auto h-1 w-24 bg-terminal-cyan" />
         </div>
 
-        <div className="space-y-8">
-          {projects.map((project) => {
+        <div className="grid gap-6 md:grid-cols-2">
+          {projects.map((project, index) => {
             const opensExternal = project.link?.startsWith("http") ?? false;
             return (
               <article
                 key={project.title}
-                className={`terminal-section group flex flex-col gap-6 rounded-lg p-4 sm:p-6 md:flex-row ${opensExternal ? "cursor-pointer hover-glow" : ""}`}
+                className={`terminal-section group flex flex-col rounded-lg p-4 sm:p-6 ${index === 0 ? "md:col-span-2 md:grid md:grid-cols-[1.15fr_1fr] md:gap-8" : ""} ${opensExternal ? "cursor-pointer hover-glow" : ""}`}
                 onClick={() => { if (opensExternal && project.link) window.open(project.link, "_blank", "noopener,noreferrer"); }}
               >
-                <div className="md:w-1/3">
-                  <div className={`overflow-hidden rounded-lg border border-terminal-gray/20 bg-terminal-gray/10 ${project.title === "WHOOP BLE Tracker" ? "aspect-[802/631]" : "aspect-video"}`}>
-                    {project.image && <img src={project.image} alt={`${project.title} preview`} className={`h-full w-full ${project.title === "WHOOP BLE Tracker" ? "object-contain" : "object-cover"}`} />}
+                <div className="mb-5 md:mb-0">
+                  <div className={`overflow-hidden rounded-lg border border-terminal-gray/20 bg-terminal-gray/10 ${index === 0 ? "aspect-[16/8]" : "aspect-video"}`}>
+                    {project.image && <img src={project.image} alt={`${project.title} preview`} loading={index < 2 ? "eager" : "lazy"} decoding="async" className={`h-full w-full transition duration-500 group-hover:scale-[1.02] ${project.title === "WHOOP BLE Tracker" ? "object-contain" : "object-cover"}`} />}
                     {project.visual === "multi-agent" && <MultiAgentDiagram compact />}
                     {project.visual === "ivr" && <IvrDiagram compact />}
                   </div>
                 </div>
 
-                <div className="min-w-0 font-mono md:w-2/3">
+                <div className="min-w-0 font-mono">
                   <div className="mb-4 flex items-start justify-between gap-3">
                     <div className="flex shrink-0 items-center space-x-2 pt-1"><div className="h-3 w-3 rounded-full bg-terminal-green" /><div className="h-3 w-3 rounded-full bg-terminal-cyan" /><div className="h-3 w-3 rounded-full bg-terminal-magenta" /></div>
                     <div className={`max-w-full rounded px-2 py-1 text-right text-[10px] sm:text-xs ${statusClass(project.status)}`}>{project.label ?? project.status}</div>

@@ -19,6 +19,12 @@ const Header = ({ activeTab, setActiveTab }: HeaderProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleNavigate = (event: Event) => handleTabClick((event as CustomEvent<TabType>).detail);
+    window.addEventListener("portfolio:navigate", handleNavigate);
+    return () => window.removeEventListener("portfolio:navigate", handleNavigate);
+  }, []);
+
   const handleTabClick = (tab: TabType) => {
     setActiveTab(tab);
     setIsMobileMenuOpen(false);
