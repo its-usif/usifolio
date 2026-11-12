@@ -16,7 +16,7 @@ type DetailId = "multi-agent" | "whoop";
 
 type Project = {
   title: string;
-  context?: string;
+  context: string;
   description: string;
   tech: string[];
   status: string;
@@ -70,6 +70,7 @@ const projects: Project[] = [
   },
   {
     title: "Esh7an",
+    context: "HBKU · Student Team Project",
     description: "EV Charging Optimization Tool — AI- and GIS-based tool using traffic flow data to support EV charging station planning in collaboration with Tarsheed/Kahramaa mentors.",
     tech: ["AI", "GIS", "React"],
     status: "Live",
@@ -78,6 +79,7 @@ const projects: Project[] = [
   },
   {
     title: "Lab Portal",
+    context: "HBKU · Laboratory System Assistant",
     description: "Contributed frontend and backend updates to HBKU's internal Lab Portal, helping organize and access laboratory resources.",
     tech: ["React", "Node.js", "Database"],
     status: "Completed",
@@ -86,6 +88,7 @@ const projects: Project[] = [
   },
   {
     title: "Vertere Project",
+    context: "HBKU · Facilities & Laboratory Systems",
     description: "Audited and maintained chemical inventory records in Vértere LIMS, reconciling digital records with physical laboratory stock and improving data consistency.",
     tech: ["Python", "Database", "LIMS"],
     status: "Completed",
@@ -94,6 +97,7 @@ const projects: Project[] = [
   },
   {
     title: "Usifolio",
+    context: "Personal Project",
     description: "My personal portfolio: a terminal-inspired home for AI, automation, and engineering projects, built with React and TypeScript.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
     status: "Live",
