@@ -2,13 +2,17 @@ import { useState } from "react";
 import { ArrowRight, Github } from "lucide-react";
 import cargolensPreview from "@/assets/cargolens-preview.jpg";
 import forelabLogo from "@/assets/forelab-logo.jpg";
-import ProjectPreview from "./ProjectPreview";
+import multiAgentPreview from "@/assets/bedrock-preview.jpg";
+import labPreview from "@/assets/lab-portal-preview.jpg";
+import verterePreview from "@/assets/vertere-preview.jpg";
+import usifolioPreview from "@/assets/usifolio-preview.png";
+import whoopDashboard from "@/assets/whoop-dashboard.jpg";
 import esh7anPreview from "@/assets/esh7an-preview.jpg";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { IvrDiagram, MultiAgentDiagram, WhoopFlowDiagram } from "@/components/ProjectDiagrams";
+import { MultiAgentDiagram, WhoopFlowDiagram } from "@/components/ProjectDiagrams";
 
-type DetailId = "multi-agent" | "whoop" | "ivr";
+type DetailId = "multi-agent" | "whoop";
 
 type Project = {
   title: string;
@@ -19,9 +23,8 @@ type Project = {
   label?: string;
   link?: string;
   image?: string;
-  overview?: "whoop" | "lab" | "vertere" | "portfolio";
+  imageCaption?: string;
   detailId?: DetailId;
-  visual?: "multi-agent" | "ivr";
 };
 
 const projects: Project[] = [
@@ -40,7 +43,7 @@ const projects: Project[] = [
     context: "HBKU · Senior Design Project",
     description: "Developing a portable, air-gapped digital-forensics system on NVIDIA Jetson hardware. The project brings local analysis tools and AI-assisted incident reporting together while keeping evidence on-site.",
     tech: ["NVIDIA Jetson", "Local AI", "Digital Forensics", "Embedded Systems"],
-    status: "In Development",
+    status: "",
     image: forelabLogo,
   },
   {
@@ -51,17 +54,19 @@ const projects: Project[] = [
     status: "Proprietary",
     label: "INTERNSHIP PROJECT · PROPRIETARY",
     detailId: "multi-agent",
-    visual: "multi-agent",
+    image: multiAgentPreview,
+    imageCaption: "Architecture concept",
   },
   {
     title: "WHOOP BLE Tracker",
     context: "Personal Project",
     description: "Started after my WHOOP subscription ended and an open-source health platform did not support the device. I began exploring direct BLE communication and building the missing personal iPhone integration.",
     tech: ["Swift", "Bluetooth Low Energy", "iOS", "Wearable Systems", "Health Data"],
-    status: "In Development",
-    label: "PERSONAL PROJECT · IN DEVELOPMENT",
+    status: "",
+    label: "PERSONAL PROJECT",
     detailId: "whoop",
-    overview: "whoop",
+    imageCaption: "UI concept · sample data",
+    image: whoopDashboard,
   },
   {
     title: "Esh7an",
@@ -72,22 +77,12 @@ const projects: Project[] = [
     image: esh7anPreview,
   },
   {
-    title: "IVR Backend Refactoring",
-    context: "Snoonu · AI Operations Internship",
-    description: "Refactored an existing Python IVR backend into a more generalized architecture, reducing use-case-specific logic and making the system easier to extend across different call flows.",
-    tech: ["Python", "Backend", "APIs", "IVR", "Software Architecture"],
-    status: "Proprietary",
-    label: "INTERNSHIP PROJECT · PROPRIETARY",
-    detailId: "ivr",
-    visual: "ivr",
-  },
-  {
     title: "Lab Portal",
     description: "Contributed frontend and backend updates to HBKU's internal Lab Portal, helping organize and access laboratory resources.",
     tech: ["React", "Node.js", "Database"],
     status: "Completed",
     label: "COMPLETED · INTERNAL TOOL",
-    overview: "lab",
+    image: labPreview,
   },
   {
     title: "Vertere Project",
@@ -95,7 +90,7 @@ const projects: Project[] = [
     tech: ["Python", "Database", "LIMS"],
     status: "Completed",
     label: "COMPLETED · LABORATORY SYSTEMS",
-    overview: "vertere",
+    image: verterePreview,
   },
   {
     title: "Usifolio",
@@ -103,13 +98,12 @@ const projects: Project[] = [
     tech: ["React", "TypeScript", "Tailwind CSS"],
     status: "Live",
     link: "https://github.com/its-usif/usifolio",
-    overview: "portfolio",
+    image: usifolioPreview,
   },
 ];
 
 const statusClass = (status: string) => {
   if (status === "Live") return "bg-terminal-green/20 text-terminal-green";
-  if (status === "In Development") return "bg-terminal-cyan/20 text-terminal-cyan";
   return "bg-terminal-magenta/20 text-terminal-magenta";
 };
 
@@ -144,20 +138,11 @@ const ProjectDetails = ({ id }: { id: DetailId }) => {
       </Section>
       <Section number="04" title="ARCHITECTURE / APPROACH"><WhoopFlowDiagram /></Section>
       <Section number="05" title="TECHNOLOGIES">Swift · Bluetooth Low Energy · iOS · Wearable Systems · Health Data</Section>
-      <Section number="06" title="STATUS"><span className="text-terminal-cyan">PERSONAL PROJECT · IN DEVELOPMENT</span></Section>
+      <Section number="06" title="CONTEXT"><span className="text-terminal-cyan">PERSONAL PROJECT</span></Section>
     </>
   );
 
-  return (
-    <>
-      <Section number="01" title="OVERVIEW">A Python IVR backend refactor focused on reusable architecture across different call flows.</Section>
-      <Section number="02" title="THE PROBLEM">The existing implementation contained logic tied closely to individual use cases, making repeated behavior harder to reuse and extend.</Section>
-      <Section number="03" title="MY CONTRIBUTION">Restructured common behavior into a generalized backend and tested the refactored implementation through API requests during development.</Section>
-      <Section number="04" title="ARCHITECTURE / APPROACH"><IvrDiagram /></Section>
-      <Section number="05" title="TECHNOLOGIES">Python · Backend · APIs · IVR · Software Architecture</Section>
-      <Section number="06" title="STATUS"><span className="text-terminal-magenta">INTERNSHIP PROJECT · PROPRIETARY</span></Section>
-    </>
-  );
+  return null;
 };
 
 const Projects = () => {
@@ -173,33 +158,31 @@ const Projects = () => {
           <p className="mx-auto mt-6 max-w-2xl text-sm leading-6 text-terminal-gray">A selection of team builds, internship work, and personal experiments in AI, automation, and engineering.</p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid auto-rows-fr gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => {
             const opensExternal = project.link?.startsWith("http") ?? false;
             return (
               <article
                 key={project.title}
-                className={`terminal-section group flex flex-col rounded-lg p-4 sm:p-6 ${index === 0 ? "md:col-span-2 md:grid md:grid-cols-[1.15fr_1fr] md:gap-8" : ""} ${opensExternal ? "cursor-pointer hover-glow" : ""}`}
+                className={`terminal-section group flex h-full flex-col overflow-hidden rounded-lg p-4 sm:p-5 ${opensExternal ? "cursor-pointer hover-glow" : ""}`}
                 onClick={() => { if (opensExternal && project.link) window.open(project.link, "_blank", "noopener,noreferrer"); }}
               >
-                <div className="mb-5 md:mb-0">
-                  <div className={`overflow-hidden rounded-lg border border-terminal-gray/20 bg-terminal-gray/10 ${project.visual ? "" : "aspect-video"}`}>
-                    {project.overview && <ProjectPreview kind={project.overview} />}
+                <div className="mb-5 shrink-0">
+                  <div className="relative aspect-video overflow-hidden rounded-lg border border-terminal-gray/20 bg-terminal-dark">
+                    {project.imageCaption && <span className="absolute bottom-2 right-2 z-10 rounded bg-black/80 px-2 py-1 text-[9px] text-white/70">{project.imageCaption}</span>}
                     {project.image && <img src={project.image} alt={project.title === "ForeLab" ? "Original ForeLab project logo" : `${project.title} project preview`} loading={index < 2 ? "eager" : "lazy"} decoding="async" className={`h-full w-full transition duration-500 group-hover:scale-[1.02] ${project.title === "ForeLab" ? "object-contain bg-white" : "object-cover"}`} />}
-                    {project.visual === "multi-agent" && <MultiAgentDiagram compact />}
-                    {project.visual === "ivr" && <IvrDiagram compact />}
                   </div>
                 </div>
 
-                <div className="min-w-0 font-mono">
+                <div className="flex min-w-0 flex-1 flex-col font-mono">
                   <div className="mb-4 flex items-start justify-between gap-3">
                     <div className="flex shrink-0 items-center space-x-2 pt-1"><div className="h-3 w-3 rounded-full bg-terminal-green" /><div className="h-3 w-3 rounded-full bg-terminal-cyan" /><div className="h-3 w-3 rounded-full bg-terminal-magenta" /></div>
-                    <div className={`max-w-full rounded px-2 py-1 text-right text-[10px] sm:text-xs ${statusClass(project.status)}`}>{project.label ?? project.status}</div>
+                    {(project.label || project.status) && <div className={`max-w-full rounded px-2 py-1 text-right text-[10px] sm:text-xs ${statusClass(project.status)}`}>{project.label ?? project.status}</div>}
                   </div>
                   {project.context && <p className="mb-2 text-[10px] uppercase text-terminal-magenta sm:text-xs">{project.context}</p>}
                   <h3 className="mb-3 text-xl font-bold text-terminal-cyan transition-colors group-hover:text-terminal-green">{project.title}</h3>
                   <p className="mb-4 text-sm leading-relaxed text-terminal-gray">{project.description}</p>
-                  <div className="mb-4 flex flex-wrap gap-x-2 gap-y-1 text-xs">
+                  <div className="mb-4 mt-auto flex flex-wrap gap-x-2 gap-y-1 pt-2 text-xs">
                     <span className="text-terminal-magenta">stack = [</span>
                     {project.tech.map((tech, index) => <span className="text-terminal-cyan" key={tech}>"{tech}"{index < project.tech.length - 1 && <span className="text-terminal-gray">,</span>}</span>)}
                     <span className="text-terminal-magenta">]</span>
