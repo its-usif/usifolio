@@ -102,11 +102,6 @@ const projects: Project[] = [
   },
 ];
 
-const statusClass = (status: string) => {
-  if (status === "Live") return "bg-terminal-green/20 text-terminal-green";
-  return "bg-terminal-magenta/20 text-terminal-magenta";
-};
-
 const Section = ({ number, title, children }: { number: string; title: string; children: React.ReactNode }) => (
   <section className="border-t border-terminal-gray/20 pt-4">
     <h4 className="mb-2 text-xs font-bold text-terminal-cyan">{number} / {title}</h4>
@@ -177,7 +172,6 @@ const Projects = () => {
                 <div className="flex min-w-0 flex-1 flex-col font-mono">
                   <div className="mb-4 flex items-start justify-between gap-3">
                     <div className="flex shrink-0 items-center space-x-2 pt-1"><div className="h-3 w-3 rounded-full bg-terminal-green" /><div className="h-3 w-3 rounded-full bg-terminal-cyan" /><div className="h-3 w-3 rounded-full bg-terminal-magenta" /></div>
-                    {(project.label || project.status) && <div className={`max-w-full rounded px-2 py-1 text-right text-[10px] sm:text-xs ${statusClass(project.status)}`}>{project.label ?? project.status}</div>}
                   </div>
                   {project.context && <p className="mb-2 text-[10px] uppercase text-terminal-magenta sm:text-xs">{project.context}</p>}
                   <h3 className="mb-3 text-xl font-bold text-terminal-cyan transition-colors group-hover:text-terminal-green">{project.title}</h3>
