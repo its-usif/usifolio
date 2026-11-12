@@ -4,7 +4,7 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
-  const fullText = "> Building systems where code meets design.";
+  const fullText = "> Turning workflows into working systems.";
 
   useEffect(() => {
     let index = 0;
@@ -44,8 +44,8 @@ const Hero = () => {
           <span className={`inline-block w-3 h-6 bg-terminal-green ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`}></span>
         </div>
         <div className="mt-8 max-w-3xl">
-          <p className="mb-4 text-left text-4xl font-bold leading-tight text-foreground sm:text-6xl">Yousif Ahmed<span className="text-terminal-green">.</span></p>
-          <p className="max-w-2xl text-left text-lg leading-relaxed text-terminal-gray sm:text-xl">Computer engineering student building practical systems across software, hardware, data, and design.</p>
+          <h1 className="mb-4 text-left text-4xl font-bold leading-tight text-foreground sm:text-6xl">Yousif Ahmed<span className="text-terminal-green">.</span></h1>
+          <p className="max-w-2xl text-left text-lg leading-relaxed text-terminal-gray sm:text-xl">Computer engineering student in Qatar, exploring AI and automation through agent workflows, computer vision, and tools that make everyday work simpler.</p>
         </div>
         <div className="mt-8 flex flex-wrap gap-4">
           <button className="inline-flex items-center gap-2 rounded border border-terminal-green px-5 py-3 font-mono text-sm text-terminal-green transition hover:bg-terminal-green hover:text-background" onClick={() => window.dispatchEvent(new CustomEvent("portfolio:navigate", { detail: "projects" }))}>Explore projects <ArrowRight className="h-4 w-4" /></button>

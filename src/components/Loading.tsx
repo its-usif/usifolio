@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import yousifPortrait from "@/assets/yousif-portrait.jpg";
+import avatar from "@/assets/yousif-avatar.png";
 
 interface LoadingProps {
   onLoadingComplete: () => void;
@@ -30,14 +30,15 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
         
         if (newProgress >= 100) {
           clearInterval(timer);
-          setTimeout(() => onLoadingComplete(), 800);
           return 100;
         }
         return newProgress;
       });
-    }, 60);
+    }, 12);
 
-    return () => clearInterval(timer);
+    const complete = setTimeout(onLoadingComplete, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 100 : 1000);
+
+    return () => { clearInterval(timer); clearTimeout(complete); };
   }, [onLoadingComplete]);
 
   return (
@@ -78,7 +79,7 @@ const Loading = ({ onLoadingComplete }: LoadingProps) => {
           <div className="w-40 h-40 relative">
             {/* You can replace this src with your character image */}
             <img 
-              src="/lovable-uploads/34872503-04f9-454a-9a1f-16d4590e603f.png" 
+              src={avatar}
               alt="Character saying hello and waving" 
               className="w-full h-full object-contain drop-shadow-lg animate-pulse"
             />

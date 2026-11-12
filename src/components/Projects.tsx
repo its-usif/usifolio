@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { ArrowRight, Github } from "lucide-react";
-import usifolioPreview from "@/assets/usifolio-preview.png";
-import labPortalPreview from "@/assets/lab-portal-preview.jpg";
-import verterePreview from "@/assets/vertere-preview.jpg";
+import cargolensPreview from "@/assets/cargolens-preview.jpg";
+import forelabLogo from "@/assets/forelab-logo.jpg";
+import ProjectPreview from "./ProjectPreview";
 import esh7anPreview from "@/assets/esh7an-preview.jpg";
-import whoopPreview from "@/assets/whoop-ble-tracker.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { IvrDiagram, MultiAgentDiagram, WhoopFlowDiagram } from "@/components/ProjectDiagrams";
@@ -20,11 +19,30 @@ type Project = {
   label?: string;
   link?: string;
   image?: string;
+  overview?: "whoop" | "lab" | "vertere" | "portfolio";
   detailId?: DetailId;
   visual?: "multi-agent" | "ivr";
 };
 
 const projects: Project[] = [
+  {
+    title: "CargoLens",
+    context: "Qai × Hugging Face Hackathon · Finalist team · November 2026",
+    description: "Co-built with the ForeLab team: AI-assisted container-damage inspection using RF-DETR, OWLv2, and a fine-tuned Qwen3-VL verifier. The bilingual Gradio demo highlights detections, flags uncertain cases for review, and generates English or Arabic PDF reports.",
+    tech: ["Python", "Computer Vision", "RF-DETR", "Qwen3-VL", "Gradio"],
+    status: "Prototype",
+    label: "TEAM PROJECT · HACKATHON FINALIST",
+    image: cargolensPreview,
+    link: "https://huggingface.co/spaces/Omar111199/team-qh-109-container-inspect-app",
+  },
+  {
+    title: "ForeLab",
+    context: "HBKU · Senior Design Project",
+    description: "Developing a portable, air-gapped digital-forensics system on NVIDIA Jetson hardware. The project brings local analysis tools and AI-assisted incident reporting together while keeping evidence on-site.",
+    tech: ["NVIDIA Jetson", "Local AI", "Digital Forensics", "Embedded Systems"],
+    status: "In Development",
+    image: forelabLogo,
+  },
   {
     title: "Multi-Agent AI System",
     context: "Snoonu · AI Operations Internship",
@@ -43,7 +61,7 @@ const projects: Project[] = [
     status: "In Development",
     label: "PERSONAL PROJECT · IN DEVELOPMENT",
     detailId: "whoop",
-    image: whoopPreview.url,
+    overview: "whoop",
   },
   {
     title: "Esh7an",
@@ -65,27 +83,27 @@ const projects: Project[] = [
   },
   {
     title: "Lab Portal",
-    description: "Internal tool for managing lab resources, updated frontend/backend",
+    description: "Contributed frontend and backend updates to HBKU's internal Lab Portal, helping organize and access laboratory resources.",
     tech: ["React", "Node.js", "Database"],
     status: "Completed",
-    link: "its an internal and we cant view it",
-    image: labPortalPreview,
+    label: "COMPLETED · INTERNAL TOOL",
+    overview: "lab",
   },
   {
     title: "Vertere Project",
-    description: "Inventory optimization and database alignment using Vertere LIMS",
+    description: "Audited and maintained chemical inventory records in Vértere LIMS, reconciling digital records with physical laboratory stock and improving data consistency.",
     tech: ["Python", "Database", "LIMS"],
     status: "Completed",
-    link: "https://hbku.vimenterprise.com/Login.aspx",
-    image: verterePreview,
+    label: "COMPLETED · LABORATORY SYSTEMS",
+    overview: "vertere",
   },
   {
     title: "Usifolio",
-    description: "This exact site, self-built for branding",
+    description: "My personal portfolio: a terminal-inspired home for AI, automation, and engineering projects, built with React and TypeScript.",
     tech: ["React", "TypeScript", "Tailwind CSS"],
     status: "Live",
-    link: "you are here already",
-    image: usifolioPreview,
+    link: "https://github.com/its-usif/usifolio",
+    overview: "portfolio",
   },
 ];
 
@@ -127,7 +145,6 @@ const ProjectDetails = ({ id }: { id: DetailId }) => {
       <Section number="04" title="ARCHITECTURE / APPROACH"><WhoopFlowDiagram /></Section>
       <Section number="05" title="TECHNOLOGIES">Swift · Bluetooth Low Energy · iOS · Wearable Systems · Health Data</Section>
       <Section number="06" title="STATUS"><span className="text-terminal-cyan">PERSONAL PROJECT · IN DEVELOPMENT</span></Section>
-      <Section number="07" title="VISUALS"><img src={whoopPreview.url} alt="Current WHOOP BLE tracker interface" className="mt-2 h-auto w-full rounded border border-terminal-gray/20 object-contain" /></Section>
     </>
   );
 
@@ -153,6 +170,7 @@ const Projects = () => {
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-4xl font-bold text-terminal-green md:text-5xl"><span className="text-terminal-gray"># </span>Projects</h2>
           <div className="mx-auto h-1 w-24 bg-terminal-cyan" />
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-6 text-terminal-gray">A selection of team builds, internship work, and personal experiments in AI, automation, and engineering.</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
@@ -165,8 +183,9 @@ const Projects = () => {
                 onClick={() => { if (opensExternal && project.link) window.open(project.link, "_blank", "noopener,noreferrer"); }}
               >
                 <div className="mb-5 md:mb-0">
-                  <div className={`overflow-hidden rounded-lg border border-terminal-gray/20 bg-terminal-gray/10 ${index === 0 ? "aspect-[16/8]" : "aspect-video"}`}>
-                    {project.image && <img src={project.image} alt={`${project.title} preview`} loading={index < 2 ? "eager" : "lazy"} decoding="async" className={`h-full w-full transition duration-500 group-hover:scale-[1.02] ${project.title === "WHOOP BLE Tracker" ? "object-contain" : "object-cover"}`} />}
+                  <div className={`overflow-hidden rounded-lg border border-terminal-gray/20 bg-terminal-gray/10 ${project.visual ? "" : "aspect-video"}`}>
+                    {project.overview && <ProjectPreview kind={project.overview} />}
+                    {project.image && <img src={project.image} alt={project.title === "ForeLab" ? "Original ForeLab project logo" : `${project.title} project preview`} loading={index < 2 ? "eager" : "lazy"} decoding="async" className={`h-full w-full transition duration-500 group-hover:scale-[1.02] ${project.title === "ForeLab" ? "object-contain bg-white" : "object-cover"}`} />}
                     {project.visual === "multi-agent" && <MultiAgentDiagram compact />}
                     {project.visual === "ivr" && <IvrDiagram compact />}
                   </div>
@@ -191,7 +210,7 @@ const Projects = () => {
                       VIEW PROJECT <ArrowRight aria-hidden="true" />
                     </Button>
                   ) : project.link ? (
-                    <div className="break-all text-xs"><span className="text-terminal-green">$</span><span className="text-terminal-gray"> view_project --url=</span><span className="text-terminal-cyan hover:underline">{project.link}</span></div>
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={event => event.stopPropagation()} className="inline-flex items-center gap-2 text-xs text-terminal-green hover:text-terminal-cyan">{project.title === "Usifolio" ? "VIEW SOURCE" : "OPEN DEMO"}<ArrowRight className="h-4 w-4" /></a>
                   ) : null}
                 </div>
               </article>

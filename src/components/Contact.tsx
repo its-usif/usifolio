@@ -106,7 +106,7 @@ const Contact = () => {
             <span className="text-terminal-green">// </span>
             Built with React & TypeScript
             <span className="text-terminal-cyan"> · </span>
-            Designed with ❤️ by Yousif Ahmed
+            Yousif Ahmed · AI, automation & engineering
           </div>
         </div>
       </div>

@@ -73,6 +73,8 @@ const Header = ({ activeTab, setActiveTab }: HeaderProps) => {
           {/* Mobile menu button */}
           <button 
             className="md:hidden text-terminal-green"
+            aria-label={isMobileMenuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

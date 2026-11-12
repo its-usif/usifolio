@@ -9,6 +9,8 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  if (isLoading) return <Loading onLoadingComplete={() => setIsLoading(false)} />;
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -27,3 +29,5 @@ const App = () => {
 };
 
 export default App;
+import { useState } from "react";
+import Loading from "./components/Loading";
