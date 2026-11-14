@@ -9,7 +9,7 @@ import AskUsif from "../components/AskUsif";
 export type TabType = "home" | "about" | "projects" | "ask" | "contact";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState<TabType>("home");
+  const [activeTab, setActiveTab] = useState<TabType>("ask");
 
   const renderContent = () => {
     switch (activeTab) {

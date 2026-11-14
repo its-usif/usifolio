@@ -1,5 +1,6 @@
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
-import { Bot, Send, Sparkles, UserRound } from "lucide-react";
+import { Send, Sparkles, UserRound } from "lucide-react";
+import avatar from "@/assets/yousif-avatar.png";
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
@@ -8,15 +9,15 @@ const API_URL =
   "https://ask-usif.youssifalkarim.workers.dev";
 
 const suggestions = [
-  "What AI experience does Yousif have?",
+  "What AI experience do you have?",
   "Tell me about CargoLens.",
-  "What did Yousif work on at Snoonu?",
-  "Which technologies has Yousif used?",
+  "What did you work on at Snoonu?",
+  "Which technologies have you used?",
 ];
 
 const initialMessage: ChatMessage = {
   role: "assistant",
-  content: "Hi — I’m Ask Usif, an AI guide to Yousif’s public portfolio. Ask me about his experience, projects, technical skills, or interests.",
+  content: "Hey, I’m Yousif. Ask me about what I’ve built, my experience with AI and automation, or the kind of work I want to do next.",
 };
 
 const AskUsif = () => {
@@ -24,10 +25,11 @@ const AskUsif = () => {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const messageEndRef = useRef<HTMLDivElement>(null);
+  const chatScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const chat = chatScrollRef.current;
+    if (chat) chat.scrollTo({ top: chat.scrollHeight, behavior: "smooth" });
   }, [messages, isLoading, error]);
 
   const sendMessage = async (question: string) => {
@@ -70,40 +72,55 @@ const AskUsif = () => {
   };
 
   return (
-    <section id="ask" className="min-h-[calc(100vh-4rem)] py-12 sm:py-20">
-      <div className="container mx-auto max-w-5xl px-4 sm:px-6">
-        <div className="mb-8">
-          <div className="mb-4 flex items-center gap-3 text-sm text-terminal-green"><Sparkles className="h-4 w-4" /><span># ask_usif.ai</span></div>
-          <h1 className="text-3xl font-bold text-foreground sm:text-4xl">Ask about my experience.</h1>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-terminal-gray">An AI portfolio assistant grounded in public, reviewed information about my projects and experience.</p>
+    <section id="ask" className="relative min-h-[calc(100vh-4rem)] overflow-hidden py-8 sm:py-12 lg:py-16">
+      <div className="matrix-lines" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,hsl(var(--terminal-green)/0.09),transparent_45%)]" />
+
+      <div className="pointer-events-none absolute left-[4%] top-32 hidden w-52 -rotate-2 rounded border border-terminal-green/20 bg-background/80 p-4 font-mono text-xs shadow-[0_0_35px_rgba(0,255,65,0.08)] backdrop-blur lg:block">
+        <div className="mb-3 text-terminal-green">// CURRENT_FOCUS</div>
+        <div className="space-y-2 text-terminal-gray"><p>AI + automation</p><p>Agent workflows</p><p>Computer vision</p></div>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-24 right-[3%] hidden w-56 rotate-2 rounded border border-terminal-cyan/20 bg-background/80 p-4 font-mono text-xs shadow-[0_0_35px_rgba(0,229,255,0.08)] backdrop-blur xl:block">
+        <div className="mb-3 text-terminal-cyan">// ASK_ME_ABOUT</div>
+        <div className="flex flex-wrap gap-2 text-terminal-gray"><span className="rounded border border-terminal-gray/20 px-2 py-1">CargoLens</span><span className="rounded border border-terminal-gray/20 px-2 py-1">ForeLab</span><span className="rounded border border-terminal-gray/20 px-2 py-1">Snoonu</span></div>
+      </div>
+
+      <div className="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6">
+        <div className="mb-6 text-center sm:mb-8">
+          <div className="mb-3 inline-flex items-center gap-2 text-xs text-terminal-green"><Sparkles className="h-4 w-4" /><span>AN INTERACTIVE PORTFOLIO</span></div>
+          <h1 className="text-3xl font-bold text-foreground sm:text-5xl">Talk to my portfolio<span className="text-terminal-green">.</span></h1>
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-terminal-gray sm:text-base">Skip the scrolling. Ask me directly about my work, projects, and technical experience.</p>
         </div>
 
-        <div className="terminal-section overflow-hidden rounded-lg">
+        <div className="terminal-section overflow-hidden rounded-xl border-terminal-green/30 shadow-[0_0_60px_rgba(0,255,65,0.08)]">
           <div className="flex items-center justify-between border-b border-terminal-gray/20 px-4 py-3 text-xs sm:px-6">
-            <div className="flex items-center gap-2 text-terminal-cyan"><span className="h-2 w-2 rounded-full bg-terminal-green" />ASK_USIF</div>
-            <span className="text-terminal-gray">AI-GENERATED · PUBLIC PORTFOLIO DATA</span>
+            <div className="flex items-center gap-3">
+              <div className="relative h-9 w-9 overflow-hidden rounded-full border border-terminal-green/50 bg-black/40"><img src={avatar} alt="Yousif" className="h-full w-full object-cover [image-rendering:pixelated]" /></div>
+              <div><div className="text-terminal-cyan">YOUSIF</div><div className="mt-0.5 flex items-center gap-1.5 text-[10px] text-terminal-gray"><span className="h-1.5 w-1.5 rounded-full bg-terminal-green" />online</div></div>
+            </div>
+            <span className="hidden text-terminal-gray sm:block">ASK ME ANYTHING ABOUT MY WORK</span>
           </div>
 
-          <div className="h-[430px] space-y-5 overflow-y-auto p-4 sm:p-6" aria-live="polite">
+          <div ref={chatScrollRef} className="h-[360px] space-y-5 overflow-y-auto p-4 sm:h-[390px] sm:p-6" aria-live="polite">
             {messages.map((message, index) => (
               <div key={`${message.role}-${index}`} className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-                {message.role === "assistant" && <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded border border-terminal-green/30 text-terminal-green"><Bot className="h-4 w-4" /></div>}
+                {message.role === "assistant" && <div className="mt-1 h-9 w-9 shrink-0 overflow-hidden rounded-full border border-terminal-green/40 bg-black/40"><img src={avatar} alt="" className="h-full w-full object-cover [image-rendering:pixelated]" /></div>}
                 <div className={`max-w-[82%] rounded border px-4 py-3 text-sm leading-6 ${message.role === "user" ? "border-terminal-cyan/30 bg-terminal-cyan/10 text-foreground" : "border-terminal-gray/20 bg-black/30 text-terminal-gray"}`}>{message.content}</div>
                 {message.role === "user" && <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded border border-terminal-cyan/30 text-terminal-cyan"><UserRound className="h-4 w-4" /></div>}
               </div>
             ))}
-            {isLoading && <div className="flex items-center gap-3 text-sm text-terminal-green"><Bot className="h-4 w-4" /><span className="animate-pulse">Thinking...</span></div>}
+            {isLoading && <div className="flex items-center gap-3 text-sm text-terminal-green"><div className="h-8 w-8 overflow-hidden rounded-full border border-terminal-green/40"><img src={avatar} alt="" className="h-full w-full object-cover [image-rendering:pixelated]" /></div><span className="animate-pulse">typing...</span></div>}
             {error && <p className="rounded border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">{error}</p>}
-            <div ref={messageEndRef} />
           </div>
 
           <div className="border-t border-terminal-gray/20 p-4 sm:p-6">
             {messages.length === 1 && <div className="mb-4 flex flex-wrap gap-2">{suggestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => void sendMessage(suggestion)} className="rounded border border-terminal-gray/20 px-3 py-2 text-left text-xs text-terminal-gray transition hover:border-terminal-cyan/50 hover:text-terminal-cyan">{suggestion}</button>)}</div>}
             <form onSubmit={handleSubmit} className="flex items-end gap-3">
-              <textarea value={input} onChange={(event) => setInput(event.target.value.slice(0, 500))} onKeyDown={handleKeyDown} rows={2} placeholder="Ask about Yousif's experience..." aria-label="Question for Ask Usif" className="min-h-[56px] flex-1 resize-none rounded border border-terminal-gray/30 bg-black/40 px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-terminal-gray/60 focus:border-terminal-green/60" />
+              <textarea value={input} onChange={(event) => setInput(event.target.value.slice(0, 500))} onKeyDown={handleKeyDown} rows={2} placeholder="Ask me something..." aria-label="Question for Yousif" className="min-h-[56px] flex-1 resize-none rounded border border-terminal-gray/30 bg-black/40 px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-terminal-gray/60 focus:border-terminal-green/60" />
               <button type="submit" disabled={!input.trim() || isLoading} aria-label="Send question" className="flex h-14 w-14 shrink-0 items-center justify-center rounded border border-terminal-green text-terminal-green transition hover:bg-terminal-green hover:text-background disabled:cursor-not-allowed disabled:opacity-40"><Send className="h-5 w-5" /></button>
             </form>
-            <p className="mt-3 text-[10px] leading-4 text-terminal-gray">This assistant is not Yousif and cannot make commitments or provide private information. Verify important details directly with him.</p>
+            <p className="mt-3 text-[10px] leading-4 text-terminal-gray/70">AI version of me · grounded in information I’ve reviewed · important details should be confirmed directly</p>
           </div>
         </div>
       </div>

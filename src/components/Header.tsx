@@ -49,7 +49,7 @@ const Header = ({ activeTab, setActiveTab }: HeaderProps) => {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <button 
-            onClick={() => handleTabClick("home")}
+            onClick={() => handleTabClick("ask")}
             className="text-lg font-bold text-terminal-green hover:text-terminal-cyan transition-colors duration-300"
           >
             [Yousif Ahmed]
