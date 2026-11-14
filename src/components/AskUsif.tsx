@@ -1,5 +1,5 @@
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
-import { Send, Sparkles, UserRound } from "lucide-react";
+import { Send, UserRound } from "lucide-react";
 import avatar from "@/assets/yousif-avatar-clean.png";
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
@@ -88,8 +88,7 @@ const AskUsif = () => {
 
       <div className="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6">
         <div className="mb-6 text-center sm:mb-8">
-          <div className="mb-3 inline-flex items-center gap-2 text-xs text-terminal-green"><Sparkles className="h-4 w-4" /><span>AN INTERACTIVE PORTFOLIO</span></div>
-          <h1 className="text-3xl font-bold text-foreground sm:text-5xl">Talk to my portfolio<span className="text-terminal-green">.</span></h1>
+          <h1 className="text-3xl font-bold text-foreground sm:text-5xl">Talk to me<span className="text-terminal-green">.</span></h1>
           <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-terminal-gray sm:text-base">Skip the scrolling. Ask me directly about my work, projects, and technical experience.</p>
         </div>
 
