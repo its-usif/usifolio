@@ -34,6 +34,7 @@ const Header = ({ activeTab, setActiveTab }: HeaderProps) => {
   const navItems: { id: TabType; label: string }[] = [
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
+    { id: "ask", label: "Ask Usif" },
     { id: "contact", label: "Contact" },
   ];
 

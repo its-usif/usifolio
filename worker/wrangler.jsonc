@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ask-usif",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-14",
+  "ai": { "binding": "AI" },
+  "observability": { "enabled": true }
+}
