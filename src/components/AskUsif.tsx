@@ -1,6 +1,6 @@
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { Send, Sparkles, UserRound } from "lucide-react";
-import avatar from "@/assets/yousif-avatar.png";
+import avatar from "@/assets/yousif-avatar-clean.png";
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
@@ -17,7 +17,7 @@ const suggestions = [
 
 const initialMessage: ChatMessage = {
   role: "assistant",
-  content: "Hey, I’m Yousif. Ask me about what I’ve built, my experience with AI and automation, or the kind of work I want to do next.",
+  content: "Hey, I’m Yousif. Ask me about my experience.",
 };
 
 const AskUsif = () => {
@@ -96,7 +96,7 @@ const AskUsif = () => {
         <div className="terminal-section overflow-hidden rounded-xl border-terminal-green/30 shadow-[0_0_60px_rgba(0,255,65,0.08)]">
           <div className="flex items-center justify-between border-b border-terminal-gray/20 px-4 py-3 text-xs sm:px-6">
             <div className="flex items-center gap-3">
-              <div className="relative h-9 w-9 overflow-hidden rounded-full border border-terminal-green/50 bg-black/40"><img src={avatar} alt="Yousif" className="h-full w-full object-cover [image-rendering:pixelated]" /></div>
+              <img src={avatar} alt="Yousif" className="h-11 w-11 object-contain [image-rendering:pixelated]" />
               <div><div className="text-terminal-cyan">YOUSIF</div><div className="mt-0.5 flex items-center gap-1.5 text-[10px] text-terminal-gray"><span className="h-1.5 w-1.5 rounded-full bg-terminal-green" />online</div></div>
             </div>
             <span className="hidden text-terminal-gray sm:block">ASK ME ANYTHING ABOUT MY WORK</span>
@@ -105,12 +105,12 @@ const AskUsif = () => {
           <div ref={chatScrollRef} className="h-[360px] space-y-5 overflow-y-auto p-4 sm:h-[390px] sm:p-6" aria-live="polite">
             {messages.map((message, index) => (
               <div key={`${message.role}-${index}`} className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-                {message.role === "assistant" && <div className="mt-1 h-9 w-9 shrink-0 overflow-hidden rounded-full border border-terminal-green/40 bg-black/40"><img src={avatar} alt="" className="h-full w-full object-cover [image-rendering:pixelated]" /></div>}
+                {message.role === "assistant" && <img src={avatar} alt="" className="mt-1 h-10 w-10 shrink-0 object-contain [image-rendering:pixelated]" />}
                 <div className={`max-w-[82%] rounded border px-4 py-3 text-sm leading-6 ${message.role === "user" ? "border-terminal-cyan/30 bg-terminal-cyan/10 text-foreground" : "border-terminal-gray/20 bg-black/30 text-terminal-gray"}`}>{message.content}</div>
                 {message.role === "user" && <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded border border-terminal-cyan/30 text-terminal-cyan"><UserRound className="h-4 w-4" /></div>}
               </div>
             ))}
-            {isLoading && <div className="flex items-center gap-3 text-sm text-terminal-green"><div className="h-8 w-8 overflow-hidden rounded-full border border-terminal-green/40"><img src={avatar} alt="" className="h-full w-full object-cover [image-rendering:pixelated]" /></div><span className="animate-pulse">typing...</span></div>}
+            {isLoading && <div className="flex items-center gap-3 text-sm text-terminal-green"><img src={avatar} alt="" className="h-9 w-9 object-contain [image-rendering:pixelated]" /><span className="animate-pulse">typing...</span></div>}
             {error && <p className="rounded border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">{error}</p>}
           </div>
 
@@ -120,7 +120,6 @@ const AskUsif = () => {
               <textarea value={input} onChange={(event) => setInput(event.target.value.slice(0, 500))} onKeyDown={handleKeyDown} rows={2} placeholder="Ask me something..." aria-label="Question for Yousif" className="min-h-[56px] flex-1 resize-none rounded border border-terminal-gray/30 bg-black/40 px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-terminal-gray/60 focus:border-terminal-green/60" />
               <button type="submit" disabled={!input.trim() || isLoading} aria-label="Send question" className="flex h-14 w-14 shrink-0 items-center justify-center rounded border border-terminal-green text-terminal-green transition hover:bg-terminal-green hover:text-background disabled:cursor-not-allowed disabled:opacity-40"><Send className="h-5 w-5" /></button>
             </form>
-            <p className="mt-3 text-[10px] leading-4 text-terminal-gray/70">AI version of me · grounded in information I’ve reviewed · important details should be confirmed directly</p>
           </div>
         </div>
       </div>
