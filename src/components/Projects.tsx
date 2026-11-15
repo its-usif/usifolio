@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { ArrowRight, Github } from "lucide-react";
-import cargolensPreview from "@/assets/cargolens-preview.jpg";
+import cargolensPreview from "@/assets/cargolens-interface.png";
 import forelabLogo from "@/assets/forelab-logo.jpg";
 import multiAgentPreview from "@/assets/bedrock-preview.jpg";
 import labPreview from "@/assets/lab-portal-preview.jpg";
@@ -8,12 +7,6 @@ import verterePreview from "@/assets/vertere-preview.jpg";
 import usifolioPreview from "@/assets/usifolio-preview.png";
 import whoopDashboard from "@/assets/whoop-dashboard.jpg";
 import esh7anPreview from "@/assets/esh7an-preview.jpg";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { MultiAgentDiagram, WhoopFlowDiagram } from "@/components/ProjectDiagrams";
-
-type DetailId = "multi-agent" | "whoop";
-
 type Project = {
   title: string;
   context: string;
@@ -22,31 +15,31 @@ type Project = {
   link?: string;
   image?: string;
   imageCaption?: string;
-  detailId?: DetailId;
 };
 
 const projects: Project[] = [
   {
     title: "CargoLens",
     context: "Qai × Hugging Face Hackathon · Finalist team · November 2026",
-    description: "Co-built with the ForeLab team: AI-assisted container-damage inspection using RF-DETR, OWLv2, and a fine-tuned Qwen3-VL verifier. The bilingual Gradio demo highlights detections, flags uncertain cases for review, and generates English or Arabic PDF reports.",
+    description: "Co-built with the ForeLab team: AI-assisted container-damage inspection using RF-DETR, OWLv2, and a fine-tuned Qwen3-VL verifier. I contributed to the core approach, model fine-tuning, and hosting as part of the team effort.",
     tech: ["Python", "Computer Vision", "RF-DETR", "Qwen3-VL", "Gradio"],
     image: cargolensPreview,
-    link: "https://huggingface.co/spaces/Omar111199/team-qh-109-container-inspect-app",
+    link: "https://github.com/its-usif/cargolens",
   },
   {
     title: "ForeLab",
     context: "HBKU · Senior Design Project",
-    description: "A senior design project developing a portable digital-forensics system on NVIDIA Jetson hardware. The aim is to run analysis tools and AI-assisted incident reporting locally, without sending evidence to cloud services.",
-    tech: ["NVIDIA Jetson", "Local AI", "Digital Forensics", "Embedded Systems"],
+    description: "An ongoing senior design project for portable digital forensics on NVIDIA Jetson. I am working on the automated pipeline, Velociraptor integration, AI-assisted reporting, and the 3D-printed physical prototype.",
+    tech: ["NVIDIA Jetson", "Velociraptor", "Zeek", "Python", "Local AI"],
     image: forelabLogo,
+    link: "https://github.com/its-usif/forelab",
   },
   {
     title: "Multi-Agent AI System",
     context: "Snoonu · AI Operations Internship",
-    description: "Worked on an AWS Bedrock multi-agent architecture during my Snoonu internship, translating operational procedures into structured workflows with states, actions, guardrails, and escalation paths.",
-    tech: ["AWS Bedrock", "Python", "Multi-Agent Systems", "AI", "Workflow Orchestration"],
-    detailId: "multi-agent",
+    description: "Implemented our team's multi-agent structure in AWS Bedrock, connecting workflow components with S3 and Lambda, building structured logic and a billing-check capability, and demonstrating the working prototype.",
+    tech: ["AWS Bedrock", "Python", "AWS Lambda", "Amazon S3", "Multi-Agent Systems"],
+    link: "https://github.com/its-usif/professional-case-studies/blob/main/case-studies/aws-bedrock-multi-agent.md",
     image: multiAgentPreview,
     imageCaption: "Architecture concept",
   },
@@ -55,7 +48,7 @@ const projects: Project[] = [
     context: "Personal Project",
     description: "Started after my WHOOP subscription ended and an open-source health platform did not support the device. I began exploring direct BLE communication and building the missing personal iPhone integration.",
     tech: ["Swift", "Bluetooth Low Energy", "iOS", "Wearable Systems", "Health Data"],
-    detailId: "whoop",
+    link: "https://github.com/its-usif/whoop-ble-tracker",
     imageCaption: "UI concept · sample data",
     image: whoopDashboard,
   },
@@ -64,7 +57,7 @@ const projects: Project[] = [
     context: "HBKU · Student Team Project",
     description: "A student team prototype exploring EV charging-station planning in Qatar using traffic data, GIS, and AI-based planning ideas. Developed with feedback from KAHRAMAA/Tarsheed mentors.",
     tech: ["AI", "GIS", "React"],
-    link: "https://esh7an.lovable.app",
+    link: "https://github.com/its-usif/esh7an",
     image: esh7anPreview,
   },
   {
@@ -74,6 +67,7 @@ const projects: Project[] = [
     tech: ["Frontend", "Backend", "Laboratory Resources"],
     image: labPreview,
     imageCaption: "Laboratory inventory reference",
+    link: "https://github.com/its-usif/professional-case-studies/blob/main/case-studies/hbku-lab-portal.md",
   },
   {
     title: "Vertere Project",
@@ -81,6 +75,7 @@ const projects: Project[] = [
     description: "Audited and maintained chemical inventory records in Vértere LIMS, checking digital records against physical laboratory stock and correcting discrepancies.",
     tech: ["Vértere LIMS", "Inventory Auditing", "Data Validation"],
     image: verterePreview,
+    link: "https://github.com/its-usif/professional-case-studies/blob/main/case-studies/vertere-inventory-audit.md",
   },
   {
     title: "Usifolio",
@@ -92,47 +87,7 @@ const projects: Project[] = [
   },
 ];
 
-const Section = ({ number, title, children }: { number: string; title: string; children: React.ReactNode }) => (
-  <section className="border-t border-terminal-gray/20 pt-4">
-    <h4 className="mb-2 text-xs font-bold text-terminal-cyan">{number} / {title}</h4>
-    <div className="text-sm leading-relaxed text-terminal-gray">{children}</div>
-  </section>
-);
-
-const ProjectDetails = ({ id }: { id: DetailId }) => {
-  if (id === "multi-agent") return (
-    <>
-      <Section number="01" title="OVERVIEW">Internship work on an AWS Bedrock multi-agent architecture for structured operational workflows.</Section>
-      <Section number="02" title="THE PROBLEM">Operational procedures need explicit states, transitions, guardrails, and escalation paths before they can be executed reliably by an agent system.</Section>
-      <Section number="03" title="MY CONTRIBUTION">Translated SOP logic into machine-readable workflows containing states, variables, guardrails, transitions, escalation conditions, and executable actions.</Section>
-      <Section number="04" title="ARCHITECTURE / APPROACH"><p className="mb-3">A simplified illustration of the approach, rather than a production architecture or screenshot.</p><MultiAgentDiagram /></Section>
-      <Section number="05" title="TECHNOLOGIES">AWS Bedrock · Python · Multi-Agent Systems · AI · Workflow Orchestration</Section>
-    </>
-  );
-
-  if (id === "whoop") return (
-    <>
-      <Section number="01" title="OVERVIEW">A personal project exploring direct BLE communication between my WHOOP device and an iPhone. The dashboard cover is a UI concept with sample data, not a screenshot of a finished tracker.</Section>
-      <Section number="02" title="THE PROBLEM">After my WHOOP subscription ended, the open-source health platform I wanted to use did not support the device. I began working on the missing integration instead of leaving the hardware unused.</Section>
-      <Section number="03" title="AREAS EXPLORED">
-        <ul className="grid list-inside list-disc gap-1 sm:grid-cols-2">
-          <li>BLE device communication</li><li>Service and characteristic discovery</li><li>Connection and handshake behavior</li><li>Synchronization and notifications</li><li>Wearable data handling</li><li>Custom tracker UI development</li>
-        </ul>
-        <p className="mt-3">The work explores device connectivity and personal data handling; it does not establish validated recovery or health measurements.</p>
-      </Section>
-      <Section number="04" title="ARCHITECTURE / APPROACH"><WhoopFlowDiagram /></Section>
-      <Section number="05" title="TECHNOLOGIES">Swift · Bluetooth Low Energy · iOS · Wearable Systems · Health Data</Section>
-      <Section number="06" title="CONTEXT"><span className="text-terminal-cyan">PERSONAL PROJECT</span></Section>
-    </>
-  );
-
-  return null;
-};
-
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<DetailId | null>(null);
-  const selected = projects.find((project) => project.detailId === selectedProject);
-
   return (
     <section id="projects" className="min-h-screen py-20">
       <div className="container mx-auto px-4 sm:px-6">
@@ -171,13 +126,7 @@ const Projects = () => {
                     <span className="text-terminal-magenta">]</span>
                   </div>
 
-                  {project.detailId ? (
-                    <Button variant="ghost" className="h-auto p-0 text-xs text-terminal-green hover:bg-transparent hover:text-terminal-cyan" onClick={(event) => { event.stopPropagation(); setSelectedProject(project.detailId ?? null); }}>
-                      VIEW PROJECT <ArrowRight aria-hidden="true" />
-                    </Button>
-                  ) : project.link ? (
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={event => event.stopPropagation()} className="inline-flex items-center gap-2 text-xs text-terminal-green hover:text-terminal-cyan">{project.title === "Usifolio" ? "VIEW SOURCE" : "OPEN DEMO"}<ArrowRight className="h-4 w-4" /></a>
-                  ) : null}
+                  {project.link && <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={event => event.stopPropagation()} className="inline-flex items-center gap-2 text-xs text-terminal-green hover:text-terminal-cyan">VIEW ON GITHUB<ArrowRight className="h-4 w-4" /></a>}
                 </div>
               </article>
             );
@@ -190,20 +139,6 @@ const Projects = () => {
           </a>
         </div>
       </div>
-
-      <Dialog open={selectedProject !== null} onOpenChange={(open) => { if (!open) setSelectedProject(null); }}>
-        <DialogContent className="max-h-[90vh] w-[calc(100%-1.5rem)] max-w-4xl overflow-y-auto border-terminal-green/30 bg-background p-4 font-mono sm:p-6">
-          {selected && selected.detailId && (
-            <>
-              <DialogHeader className="pr-8 text-left">
-                <DialogDescription className="text-xs uppercase text-terminal-magenta">{selected.context}</DialogDescription>
-                <DialogTitle className="text-xl text-terminal-green sm:text-2xl">{selected.title}</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-5"><ProjectDetails id={selected.detailId} /></div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
     </section>
   );
 };

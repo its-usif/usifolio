@@ -17,7 +17,7 @@ const suggestions = [
 
 const initialMessage: ChatMessage = {
   role: "assistant",
-  content: "Hey, I’m Yousif. Ask me about my experience.",
+  content: "Hey, I’m Yousif. Feel free to ask me.",
 };
 
 const AskUsif = () => {
@@ -76,23 +76,19 @@ const AskUsif = () => {
       <div className="matrix-lines" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,hsl(var(--terminal-green)/0.09),transparent_45%)]" />
 
-      <div className="pointer-events-none absolute left-[4%] top-32 hidden w-52 -rotate-2 rounded border border-terminal-green/20 bg-background/80 p-4 font-mono text-xs shadow-[0_0_35px_rgba(0,255,65,0.08)] backdrop-blur lg:block">
-        <div className="mb-3 text-terminal-green">// CURRENT_FOCUS</div>
-        <div className="space-y-2 text-terminal-gray"><p>AI + automation</p><p>Agent workflows</p><p>Computer vision</p></div>
-      </div>
-
-      <div className="pointer-events-none absolute bottom-24 right-[3%] hidden w-56 rotate-2 rounded border border-terminal-cyan/20 bg-background/80 p-4 font-mono text-xs shadow-[0_0_35px_rgba(0,229,255,0.08)] backdrop-blur xl:block">
-        <div className="mb-3 text-terminal-cyan">// ASK_ME_ABOUT</div>
-        <div className="flex flex-wrap gap-2 text-terminal-gray"><span className="rounded border border-terminal-gray/20 px-2 py-1">CargoLens</span><span className="rounded border border-terminal-gray/20 px-2 py-1">ForeLab</span><span className="rounded border border-terminal-gray/20 px-2 py-1">Snoonu</span></div>
-      </div>
-
-      <div className="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="container relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-6 text-center sm:mb-8">
           <h1 className="text-3xl font-bold text-foreground sm:text-5xl">Talk to me<span className="text-terminal-green">.</span></h1>
           <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-terminal-gray sm:text-base">Skip the scrolling. Ask me directly about my work, projects, and technical experience.</p>
         </div>
 
-        <div className="terminal-section overflow-hidden rounded-xl border-terminal-green/30 shadow-[0_0_60px_rgba(0,255,65,0.08)]">
+        <div className="grid items-start gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] xl:grid-cols-[13rem_minmax(0,1fr)_14rem]">
+          <aside className="pointer-events-none hidden rounded-lg border border-terminal-green/20 bg-background/75 p-4 font-mono text-xs shadow-[0_0_35px_rgba(0,255,65,0.08)] backdrop-blur lg:block">
+            <div className="mb-3 text-terminal-green">// CURRENT_FOCUS</div>
+            <div className="space-y-2 text-terminal-gray"><p>AI + automation</p><p>Agent workflows</p><p>Computer vision</p></div>
+          </aside>
+
+          <div className="terminal-section min-w-0 overflow-hidden rounded-xl border-terminal-green/30 shadow-[0_0_60px_rgba(0,255,65,0.08)]">
           <div className="flex items-center justify-between border-b border-terminal-gray/20 px-4 py-3 text-xs sm:px-6">
             <div className="flex items-center gap-3">
               <img src={avatar} alt="Yousif" className="h-11 w-11 object-contain [image-rendering:pixelated]" />
@@ -120,6 +116,12 @@ const AskUsif = () => {
               <button type="submit" disabled={!input.trim() || isLoading} aria-label="Send question" className="flex h-14 w-14 shrink-0 items-center justify-center rounded border border-terminal-green text-terminal-green transition hover:bg-terminal-green hover:text-background disabled:cursor-not-allowed disabled:opacity-40"><Send className="h-5 w-5" /></button>
             </form>
           </div>
+          </div>
+
+          <aside className="pointer-events-none hidden rounded-lg border border-terminal-cyan/20 bg-background/75 p-4 font-mono text-xs shadow-[0_0_35px_rgba(0,229,255,0.08)] backdrop-blur xl:block">
+            <div className="mb-3 text-terminal-cyan">// ASK_ME_ABOUT</div>
+            <div className="flex flex-wrap gap-2 text-terminal-gray"><span className="rounded border border-terminal-gray/20 px-2 py-1">CargoLens</span><span className="rounded border border-terminal-gray/20 px-2 py-1">ForeLab</span><span className="rounded border border-terminal-gray/20 px-2 py-1">Snoonu</span></div>
+          </aside>
         </div>
       </div>
     </section>
