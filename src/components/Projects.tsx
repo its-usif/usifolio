@@ -89,21 +89,21 @@ const projects: Project[] = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="min-h-screen py-20">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="projects" className="min-h-screen overflow-x-hidden py-20">
+      <div className="container mx-auto min-w-0 px-4 sm:px-6">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-4xl font-bold text-terminal-green md:text-5xl"><span className="text-terminal-gray"># </span>Projects</h2>
           <div className="mx-auto h-1 w-24 bg-terminal-cyan" />
           <p className="mx-auto mt-6 max-w-2xl text-sm leading-6 text-terminal-gray">A selection of team builds, internship work, and personal experiments in AI, automation, and engineering.</p>
         </div>
 
-        <div className="grid auto-rows-fr gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 auto-rows-auto gap-6 md:grid-cols-2 md:auto-rows-fr lg:grid-cols-3">
           {projects.map((project, index) => {
             const opensExternal = project.link?.startsWith("http") ?? false;
             return (
               <article
                 key={project.title}
-                className={`terminal-section group flex h-full flex-col overflow-hidden rounded-lg p-4 sm:p-5 ${opensExternal ? "cursor-pointer hover-glow" : ""}`}
+                className={`terminal-section group flex min-w-0 h-full flex-col overflow-hidden rounded-lg p-4 sm:p-5 ${opensExternal ? "cursor-pointer hover-glow" : ""}`}
                 onClick={() => { if (opensExternal && project.link) window.open(project.link, "_blank", "noopener,noreferrer"); }}
               >
                 <div className="mb-5 shrink-0">
