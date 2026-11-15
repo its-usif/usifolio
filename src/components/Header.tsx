@@ -25,6 +25,13 @@ const Header = ({ activeTab, setActiveTab }: HeaderProps) => {
     return () => window.removeEventListener("portfolio:navigate", handleNavigate);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const handleTabClick = (tab: TabType) => {
     setActiveTab(tab);
     setIsMobileMenuOpen(false);
@@ -41,7 +48,9 @@ const Header = ({ activeTab, setActiveTab }: HeaderProps) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isMobileMenuOpen
+          ? "bg-background border-b border-terminal-green/20"
+          : isScrolled
           ? "bg-background/80 backdrop-blur-md border-b border-terminal-green/20"
           : "bg-transparent"
       }`}
@@ -90,13 +99,13 @@ const Header = ({ activeTab, setActiveTab }: HeaderProps) => {
 
         {/* Mobile menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-terminal-green/20 pt-4">
-            <div className="flex flex-col space-y-4">
+          <div className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto border-t border-terminal-green/20 bg-background px-6 py-8 md:hidden">
+            <div className="mx-auto flex max-w-lg flex-col">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleTabClick(item.id)}
-                  className={`text-left transition-colors duration-300 ${
+                  className={`border-b border-terminal-gray/15 py-5 text-left text-xl transition-colors duration-300 ${
                     activeTab === item.id
                       ? "text-terminal-cyan"
                       : "text-terminal-gray hover:text-terminal-cyan"

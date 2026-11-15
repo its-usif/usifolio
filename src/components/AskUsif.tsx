@@ -97,7 +97,7 @@ const AskUsif = () => {
             <span className="hidden text-terminal-gray sm:block">ASK ME ANYTHING ABOUT MY WORK</span>
           </div>
 
-          <div ref={chatScrollRef} className="h-[360px] space-y-5 overflow-y-auto p-4 sm:h-[390px] sm:p-6" aria-live="polite">
+          <div ref={chatScrollRef} className="h-[240px] space-y-5 overflow-y-auto p-4 sm:h-[390px] sm:p-6" aria-live="polite">
             {messages.map((message, index) => (
               <div key={`${message.role}-${index}`} className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                 {message.role === "assistant" && <img src={avatar} alt="" className="mt-1 h-10 w-10 shrink-0 object-contain [image-rendering:pixelated]" />}
