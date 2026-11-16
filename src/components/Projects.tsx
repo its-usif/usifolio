@@ -22,7 +22,7 @@ const projects: Project[] = [
     title: "CargoLens",
     context: "Qai × Hugging Face Hackathon · Finalist team · November 2026",
     description: "Co-built with the ForeLab team: AI-assisted container-damage inspection using RF-DETR, OWLv2, and a fine-tuned Qwen3-VL verifier. I contributed to the core approach, model fine-tuning, and hosting as part of the team effort.",
-    tech: ["Python", "Computer Vision", "RF-DETR", "Qwen3-VL", "Gradio"],
+    tech: ["Python", "Computer Vision", "RF-DETR", "Qwen3-VL", "Gradio", "Hugging Face"],
     image: cargolensPreview,
     link: "https://github.com/usifbuilds/cargolens",
   },

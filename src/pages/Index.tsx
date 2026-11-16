@@ -5,8 +5,9 @@ import About from "../components/About";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import AskUsif from "../components/AskUsif";
+import Resume from "../components/Resume";
 
-export type TabType = "home" | "about" | "projects" | "ask" | "contact";
+export type TabType = "home" | "about" | "projects" | "resume" | "ask" | "contact";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState<TabType>("ask");
@@ -19,6 +20,8 @@ const Index = () => {
         return <About />;
       case "projects":
         return <Projects />;
+      case "resume":
+        return <Resume />;
       case "contact":
         return <Contact />;
       case "ask":
