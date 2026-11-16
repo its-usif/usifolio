@@ -1,7 +1,7 @@
 import { Download, ExternalLink, FileText } from "lucide-react";
 
 const RESUME_FILE_ID = "1xJBvaqCdzv8720KT0dTEaETfuc2_TDKt";
-const RESUME_PREVIEW_URL = `https://drive.google.com/file/d/${RESUME_FILE_ID}/preview`;
+const RESUME_PREVIEW_URL = `https://docs.google.com/document/d/${RESUME_FILE_ID}/preview`;
 const RESUME_OPEN_URL = `https://drive.google.com/file/d/${RESUME_FILE_ID}/view`;
 const RESUME_DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${RESUME_FILE_ID}`;
 
@@ -40,11 +40,11 @@ const Resume = () => (
           </div>
         </div>
 
-        <div className="relative z-10 bg-white">
+        <div className="relative z-10 h-[72vh] min-h-[560px] overflow-hidden bg-white sm:h-[78vh]">
           <iframe
             src={RESUME_PREVIEW_URL}
             title="Yousif Ahmed resume"
-            className="h-[72vh] min-h-[560px] w-full sm:h-[78vh]"
+            className="h-[96vh] min-h-[747px] w-[133.333%] origin-top-left scale-75 sm:h-[104vh]"
             loading="lazy"
             allow="autoplay"
           />
