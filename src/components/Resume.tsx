@@ -50,10 +50,6 @@ const Resume = () => (
           />
         </div>
       </div>
-
-      <p className="mt-4 text-center text-xs leading-5 text-terminal-gray">
-        If the preview does not load, use “Open in Drive” to view the current version directly.
-      </p>
     </div>
   </section>
 );
