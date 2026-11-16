@@ -8,15 +8,7 @@ const RESUME_DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${RE
 const Resume = () => (
   <section id="resume" className="min-h-screen overflow-x-hidden py-12 sm:py-20">
     <div className="container mx-auto max-w-6xl px-4 sm:px-6">
-      <div className="mb-8 text-center sm:mb-12">
-        <div className="mb-4 text-sm text-terminal-green"># resume</div>
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
-          My experience, <span className="text-terminal-green">in one place.</span>
-        </h1>
-        <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-terminal-gray sm:text-base">
-          This page is connected to my master CV on Google Drive, so it always shows the current version.
-        </p>
-      </div>
+      <div className="mb-6 text-sm text-terminal-green sm:mb-8"># resume</div>
 
       <div className="terminal-section overflow-hidden rounded-lg">
         <div className="relative z-10 flex flex-col gap-4 border-b border-terminal-gray/20 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
