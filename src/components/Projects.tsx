@@ -24,7 +24,7 @@ const projects: Project[] = [
     description: "Co-built with the ForeLab team: AI-assisted container-damage inspection using RF-DETR, OWLv2, and a fine-tuned Qwen3-VL verifier. I contributed to the core approach, model fine-tuning, and hosting as part of the team effort.",
     tech: ["Python", "Computer Vision", "RF-DETR", "Qwen3-VL", "Gradio"],
     image: cargolensPreview,
-    link: "https://github.com/its-usif/cargolens",
+    link: "https://github.com/usifbuilds/cargolens",
   },
   {
     title: "ForeLab",
@@ -32,14 +32,14 @@ const projects: Project[] = [
     description: "An ongoing senior design project for portable digital forensics on NVIDIA Jetson. I am working on the automated pipeline, Velociraptor integration, AI-assisted reporting, and the 3D-printed physical prototype.",
     tech: ["NVIDIA Jetson", "Velociraptor", "Zeek", "Python", "Local AI"],
     image: forelabLogo,
-    link: "https://github.com/its-usif/forelab",
+    link: "https://github.com/usifbuilds/forelab",
   },
   {
     title: "Multi-Agent AI System",
     context: "Snoonu · AI Operations Internship",
     description: "Implemented our team's multi-agent structure in AWS Bedrock, connecting workflow components with S3 and Lambda, building structured logic and a billing-check capability, and demonstrating the working prototype.",
     tech: ["AWS Bedrock", "Python", "AWS Lambda", "Amazon S3", "Multi-Agent Systems"],
-    link: "https://github.com/its-usif/professional-case-studies/blob/main/case-studies/aws-bedrock-multi-agent.md",
+    link: "https://github.com/usifbuilds/professional-case-studies/blob/main/case-studies/aws-bedrock-multi-agent.md",
     image: multiAgentPreview,
     imageCaption: "Architecture concept",
   },
@@ -48,7 +48,7 @@ const projects: Project[] = [
     context: "Personal Project",
     description: "Started after my WHOOP subscription ended and an open-source health platform did not support the device. I began exploring direct BLE communication and building the missing personal iPhone integration.",
     tech: ["Swift", "Bluetooth Low Energy", "iOS", "Wearable Systems", "Health Data"],
-    link: "https://github.com/its-usif/whoop-ble-tracker",
+    link: "https://github.com/usifbuilds/whoop-ble-tracker",
     imageCaption: "UI concept · sample data",
     image: whoopDashboard,
   },
@@ -57,7 +57,7 @@ const projects: Project[] = [
     context: "HBKU · Student Team Project",
     description: "A student team prototype exploring EV charging-station planning in Qatar using traffic data, GIS, and AI-based planning ideas. Developed with feedback from KAHRAMAA/Tarsheed mentors.",
     tech: ["AI", "GIS", "React"],
-    link: "https://github.com/its-usif/esh7an",
+    link: "https://github.com/usifbuilds/esh7an",
     image: esh7anPreview,
   },
   {
@@ -67,7 +67,7 @@ const projects: Project[] = [
     tech: ["Frontend", "Backend", "Laboratory Resources"],
     image: labPreview,
     imageCaption: "Laboratory inventory reference",
-    link: "https://github.com/its-usif/professional-case-studies/blob/main/case-studies/hbku-lab-portal.md",
+    link: "https://github.com/usifbuilds/professional-case-studies/blob/main/case-studies/hbku-lab-portal.md",
   },
   {
     title: "Vertere Project",
@@ -75,7 +75,7 @@ const projects: Project[] = [
     description: "Audited and maintained chemical inventory records in Vértere LIMS, checking digital records against physical laboratory stock and correcting discrepancies.",
     tech: ["Vértere LIMS", "Inventory Auditing", "Data Validation"],
     image: verterePreview,
-    link: "https://github.com/its-usif/professional-case-studies/blob/main/case-studies/vertere-inventory-audit.md",
+    link: "https://github.com/usifbuilds/professional-case-studies/blob/main/case-studies/vertere-inventory-audit.md",
   },
   {
     title: "Usifolio",
@@ -134,7 +134,7 @@ const Projects = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <a href="https://github.com/its-usif" target="_blank" rel="noopener noreferrer" className="hover-glow inline-flex items-center space-x-2 rounded border border-terminal-gray/30 px-6 py-3 font-mono text-terminal-gray transition-colors duration-300 hover:border-terminal-green/50 hover:text-terminal-green">
+          <a href="https://github.com/usifbuilds" target="_blank" rel="noopener noreferrer" className="hover-glow inline-flex items-center space-x-2 rounded border border-terminal-gray/30 px-6 py-3 font-mono text-terminal-gray transition-colors duration-300 hover:border-terminal-green/50 hover:text-terminal-green">
             <Github className="h-5 w-5" aria-hidden="true" /><span>Explore my GitHub</span>
           </a>
         </div>
